@@ -27,15 +27,17 @@
       width: 90%;
     }
 
-    /* Logo rund und zentriert */
+    /* Logo rund, größer, mit Rand und Schatten */
     .logo {
       display: block;
       margin: 0 auto 12px;
-      max-width: 150px;  /* gleiche Größe wie vorher, ggf. anpassen */
-      aspect-ratio: 1/1; /* quadratisch für Rundung */
-      border-radius: 50%; /* rund */
-      object-fit: cover;  /* skaliert Bild sauber */
+      max-width: 180px;             /* größer */
+      aspect-ratio: 1/1;            /* quadratisch für Rundung */
+      border-radius: 50%;            /* rund */
+      object-fit: cover;             /* skaliert Bild sauber */
       background: transparent;
+      border: 1.5px solid #ddd;      /* hauchdünner Rand */
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* leichter Schatten */
     }
 
     h2 {
@@ -207,15 +209,12 @@
     }
 
     function openYouTubeApp(event) {
-      // Mobile-User-Agent prüfen
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       if (isMobile) {
         event.preventDefault();
         window.location.href = "youtube://www.youtube.com/@HisarEurope";
       }
-      // Desktop öffnet normalen Link in neuem Tab
     }
   </script>
 </body>
 </html>
-
