@@ -21,8 +21,12 @@
       border-radius: 12px;
       box-shadow: 0 6px 24px rgba(0,0,0,0.1);
       text-align: center;
-      max-width: 380px;
+      max-width: 420px;
       width: 90%;
+    }
+    .logo {
+      max-width: 180px;
+      margin-bottom: 16px;
     }
     h2 {
       margin-top: 0;
@@ -53,18 +57,66 @@
       background: #1e88e5;
       color: white;
     }
+    .hadsch {
+      background: #8e24aa;
+      color: white;
+    }
+    .socials {
+      margin-top: 20px;
+    }
+    .socials a {
+      margin: 0 10px;
+      display: inline-block;
+    }
+    .socials img {
+      width: 32px;
+      height: 32px;
+    }
+    .bank {
+      margin-top: 24px;
+    }
+    .bank img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
   <div class="card">
+
+    <!-- Logo -->
+    <img src="logo.png" alt="Hisar Europe Logo" class="logo">
+
     <h2>Willkommen bei Hisar Europe</h2>
     <p>Was möchtest du tun?</p>
+
     <a class="button bewertung" href="https://g.page/r/CchS0YgZW69REAE/review?utm_source=gbp&utm_medium=reviews&utm_campaign=qr" target="_blank">
       ⭐ Jetzt auf Google bewerten
     </a>
+
     <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
-      🌍 Touren ansehen
+      🌍 Umra-Touren ansehen
     </a>
+
+    <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank">
+      🕋 Für Hadsch 2026 anmelden
+    </a>
+
+    <!-- Social Media -->
+    <div class="socials">
+      <a href="https://www.instagram.com/hisar_europe/?hl=de" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+      </a>
+      <a href="https://www.youtube.com/@HisarEurope" target="_blank">
+        <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" alt="YouTube">
+      </a>
+    </div>
+
+    <!-- Bankverbindung -->
+    <div class="bank">
+      <img src="bankverbindung.jpg" alt="Bankverbindung">
+    </div>
+
   </div>
 </body>
 </html>
