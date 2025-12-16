@@ -28,10 +28,10 @@
     }
 
     .logo {
+      display: block;        /* Block-Element für horizontale Zentrierung */
+      margin: 0 auto 8px;    /* Oben 0, unten 8px, horizontal zentriert */
       max-width: 320px;
-      margin; 0 auto 8px;
       background: transparent;
-      display: block;
     }
 
     h2 {
@@ -63,14 +63,14 @@
       opacity: 0.95;
     }
 
-    /* Buttons – saubere Blautöne */
+    /* Buttons – harmonische Blautöne */
     .bewertung,
     .touren {
-      background: linear-gradient(to right, #2563eb, #3b82f6);
+      background: linear-gradient(to right, #2563eb, #3b82f6); /* gleiche Farbe */
     }
 
     .hadsch {
-      background: linear-gradient(to right, #3b82f6, #60a5fa);
+      background: linear-gradient(to right, #3b82f6, #60a5fa); /* etwas heller */
     }
 
     /* Bankverbindung */
@@ -152,12 +152,14 @@
 <body>
   <div class="card">
 
+    <!-- Logo -->
     <img src="logo.png" alt="Hisar Europe Logo" class="logo">
 
     <h2>Willkommen bei Hisar Europe</h2>
     <p>Was möchten Sie tun?</p>
 
-    <a class="button bewertung" href="https://g.page/r/CchS0YgZW69REAE/review" target="_blank">
+    <!-- Buttons -->
+    <a class="button bewertung" href="geo:0,0?q=Hisar+Europe" target="_blank">
       📍 Jetzt auf Google Maps bewerten
     </a>
 
@@ -169,6 +171,7 @@
       🕋 Für Hadsch 2026 anmelden
     </a>
 
+    <!-- Bankverbindung -->
     <div class="bank-toggle">
       <button class="bank-button" onclick="toggleBank()">
         🏦 Bankverbindung anzeigen
@@ -179,6 +182,7 @@
       </div>
     </div>
 
+    <!-- Social Media -->
     <div class="social-title">Besuchen Sie uns auch hier:</div>
 
     <div class="socials">
@@ -198,22 +202,7 @@
         </svg>
       </a>
 
-      <!-- YouTube (öffnet App) -->
+      <!-- YouTube -->
       <a class="social-icon" href="youtube://www.youtube.com/@HisarEurope" aria-label="YouTube">
         <svg viewBox="0 0 24 24" fill="#ff0000">
-          <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
-        </svg>
-      </a>
-    </div>
-
-  </div>
-
-  <script>
-    function toggleBank() {
-      const content = document.getElementById("bankContent");
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    }
-  </script>
-</body>
-</html>
-
+          <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1
