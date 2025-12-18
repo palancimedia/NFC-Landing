@@ -5,57 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Willkommen bei Hisar Europe</title>
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36E0S5QW48"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-36E0S5QW48');
-  </script>
-
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background: linear-gradient(to bottom, #e6edf7 0%, #f4f7fb 100%);
       color: #1f2937;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
       margin: 0;
-    }
-
-    /* Sticky Header */
-    .header {
-      position: sticky;
-      top: 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #ffffffcc;
-      backdrop-filter: blur(6px);
-      padding: 8px 16px;
-      z-index: 1000;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .header-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid #ddd;
-    }
-
-    .header-title {
-      font-weight: 600;
-      font-size: 18px;
-      color: #111827;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 60px 16px 32px;
-      gap: 24px;
+      padding: 20px;
     }
 
     .card {
@@ -66,26 +26,38 @@
       text-align: center;
       max-width: 380px;
       width: 100%;
+      margin-bottom: 20px;
     }
 
-    .card h2 {
-      margin: 0 0 6px;
+    .logo {
+      display: block;
+      margin: 0 auto 12px;
+      max-width: 180px;
+      aspect-ratio: 1/1;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid #ddd;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      margin: 6px 0;
       font-size: 22px;
       color: #111827;
     }
 
-    .card p {
+    p {
       margin: 0 0 22px;
       font-size: 16px;
       color: #4b5563;
     }
 
-    a.button, .bank-button {
+    a.button, .bank-toggle-button {
       display: block;
       width: 100%;
       text-decoration: none;
       margin: 12px 0;
-      padding: 16px;
+      padding: 14px 18px;
       border-radius: 12px;
       font-size: 16px;
       font-weight: 600;
@@ -93,10 +65,9 @@
       color: #fff;
       cursor: pointer;
       box-sizing: border-box;
-      text-align: center;
     }
 
-    a.button:hover, .bank-button:hover {
+    a.button:hover, .bank-toggle-button:hover {
       transform: translateY(-1px);
       opacity: 0.95;
     }
@@ -110,12 +81,23 @@
     }
 
     .hadsch {
-      background: linear-gradient(to right, #10b981, #34d399);
+      background: linear-gradient(to right, #3b82f6, #60a5fa);
     }
 
-    .bank-button {
-      background: #e6f0fa;
-      color: #1e3a8a;
+    .bank-card {
+      background: linear-gradient(to bottom, #eef3fb 0%, #ffffff 100%);
+      padding: 20px 16px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+      max-width: 340px;
+      width: 100%;
+      margin: 0 auto 20px;
+      text-align: center;
+    }
+
+    .bank-toggle-button {
+      background: #2563eb;
+      color: #fff;
       border: none;
     }
 
@@ -126,21 +108,27 @@
 
     .bank-content img {
       width: 100%;
-      max-width: 360px;
+      max-width: 320px;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.1);
     }
 
+    .social-title {
+      margin-top: 28px;
+      font-size: 15px;
+      color: #475569;
+    }
+
     .socials {
-      margin-top: 24px;
+      margin-top: 12px;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 16px;
     }
 
     .social-icon {
-      width: 64px;
-      height: 64px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       background: #e6f0fa;
       display: flex;
@@ -155,74 +143,65 @@
     }
 
     .social-icon svg {
-      width: 32px;
-      height: 32px;
+      width: 40px;
+      height: 40px;
     }
 
   </style>
 </head>
 <body>
 
-  <!-- Sticky Header -->
-  <div class="header">
-    <img src="logo.png" alt="Hisar Europe Logo" class="header-logo">
-    <div class="header-title">Hisar Europe</div>
+  <div class="card">
+    <img src="logo.png" alt="Hisar Europe Logo" class="logo">
+    <h2>Willkommen bei Hisar Europe</h2>
+    <p>Was möchten Sie tun?</p>
+
+    <a class="button bewertung" href="https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E&source=g.page.m._&utm_source=gbp&laa=merchant-review-solicitation" target="_blank" rel="noopener">
+      ⭐ Jetzt Google-Bewertung abgeben
+    </a>
+
+    <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
+      🌍 Eine Umra-Tour reservieren
+    </a>
+
+    <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank">
+      🕋 Für Hadsch 2026 anmelden
+    </a>
   </div>
 
-  <div class="container">
-
-    <div class="card">
-      <h2>Jetzt bewerten</h2>
-      <p>Teilen Sie Ihre Erfahrung mit Hisar Europe auf Google</p>
-      <a class="button bewertung" href="#" onclick="openGoogleMaps(event)">
-        ⭐ Jetzt Google-Bewertung abgeben
-      </a>
-    </div>
-
-    <div class="card">
-      <h2>Umra-Tour reservieren</h2>
-      <p>Planen Sie Ihre spirituelle Reise mit uns</p>
-      <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
-        🌍 Jetzt reservieren
-      </a>
-    </div>
-
-    <div class="card">
-      <h2>Hadsch 2026 anmelden</h2>
-      <p>Sichern Sie sich Ihren Platz für die Hadsch-Reise</p>
-      <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank">
-        🕋 Jetzt anmelden
-      </a>
-    </div>
-
-    <button class="bank-button" onclick="toggleBank()">🏦 Bankverbindung anzeigen</button>
+  <!-- Bank-Kasten -->
+  <div class="bank-card">
+    <button class="bank-toggle-button" onclick="toggleBank()">
+      🏦 Bankverbindung anzeigen
+    </button>
     <div id="bankContent" class="bank-content">
       <img src="bankverbindung.jpeg" alt="Bankverbindung">
     </div>
+  </div>
 
-    <div class="socials">
-      <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="url(#igGradient)">
-          <defs>
-            <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f58529"/>
-              <stop offset="50%" stop-color="#dd2a7b"/>
-              <stop offset="100%" stop-color="#8134af"/>
-            </linearGradient>
-          </defs>
-          <rect x="3" y="3" width="18" height="18" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="0.8"/>
-        </svg>
-      </a>
+  <!-- Social Icons -->
+  <div class="social-title">Besuchen Sie uns auch hier:</div>
+  <div class="socials">
+    <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="url(#igGradient)">
+        <defs>
+          <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f58529"/>
+            <stop offset="50%" stop-color="#dd2a7b"/>
+            <stop offset="100%" stop-color="#8134af"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8"/>
+      </svg>
+    </a>
 
-      <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank" onclick="openYouTubeApp(event)">
-        <svg viewBox="0 0 24 24" fill="#ff0000">
-          <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
-        </svg>
-      </a>
-    </div>
-
+    <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank" onclick="openYouTubeApp(event)">
+      <svg viewBox="0 0 24 24" fill="#ff0000">
+        <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
+      </svg>
+    </a>
   </div>
 
   <script>
@@ -238,20 +217,7 @@
         window.location.href = "youtube://www.youtube.com/@HisarEurope";
       }
     }
-
-    function openGoogleMaps(event) {
-      event.preventDefault();
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const reviewLink = "https://maps.app.goo.gl/TQWXsP5tscrUR5KB7";
-
-      if (isMobile) {
-        window.location.href = reviewLink; // öffnet direkt die Maps App auf mobilen Geräten
-      } else {
-        window.open(reviewLink, "_blank"); // öffnet neuen Tab auf Desktop
-      }
-    }
   </script>
 
 </body>
 </html>
-
