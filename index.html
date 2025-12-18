@@ -4,7 +4,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Willkommen bei Hisar Europe</title>
-
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -25,13 +24,18 @@
       text-align: center;
       max-width: 440px;
       width: 90%;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
     }
 
     .logo {
       display: block;
       margin: 0 auto 12px;
       max-width: 180px;
-      aspect-ratio: 1 / 1;
+      aspect-ratio: 1/1;
       border-radius: 50%;
       object-fit: cover;
       border: 1.5px solid #ddd;
@@ -60,7 +64,7 @@
       border-radius: 12px;
       font-size: 16px;
       font-weight: 600;
-      transition: 0.2s ease;
+      transition: 0.2s ease, box-shadow 0.2s ease;
       color: #fff;
       cursor: pointer;
       box-sizing: border-box;
@@ -68,17 +72,20 @@
 
     a.button:hover,
     .bank-button:hover {
-      transform: translateY(-1px);
-      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
     }
 
-    .bewertung,
-    .touren {
+    .bewertung {
       background: linear-gradient(to right, #2563eb, #3b82f6);
     }
 
+    .touren {
+      background: linear-gradient(to right, #10b981, #34d399);
+    }
+
     .hadsch {
-      background: linear-gradient(to right, #3b82f6, #60a5fa);
+      background: linear-gradient(to right, #f59e0b, #fbbf24);
     }
 
     .bank-button {
@@ -132,9 +139,20 @@
       width: 36px;
       height: 36px;
     }
+
+    .benefit {
+      font-size: 13px;
+      color: #475569;
+      margin-top: 4px;
+    }
+
+    .stars {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #f59e0b;
+    }
   </style>
 </head>
-
 <body>
   <div class="card">
 
@@ -143,31 +161,31 @@
     <h2>Willkommen bei Hisar Europe</h2>
     <p>Was möchten Sie tun?</p>
 
-    <!-- ⭐ SMARTER GOOGLE-BEWERTUNGS-BUTTON -->
-    <a class="button bewertung" href="#" onclick="openGoogleReview(event)">
-      ⭐ In Maps bewerten
+    <!-- ⭐ Google Bewertung CTA -->
+    <a class="button bewertung" href="#" onclick="openGoogleMaps(event)">
+      ⭐ Jetzt Google-Bewertung abgeben
     </a>
+    <div class="benefit">Helfen Sie uns mit einer kurzen Bewertung – dauert nur 30 Sekunden!</div>
+    <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
 
-    <a class="button touren" href="https://umre.hisareurope.com/" target="_blank" rel="noopener">
+    <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
       🌍 Eine Umra-Tour reservieren
     </a>
+    <div class="benefit">Sichern Sie sich Ihren Platz für die nächste Umra-Reise.</div>
 
-    <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank" rel="noopener">
+    <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank">
       🕋 Für Hadsch 2026 anmelden
     </a>
+    <div class="benefit">Planen Sie jetzt Ihre Hadsch-Reise für 2026.</div>
 
-    <button class="bank-button" onclick="toggleBank()">
-      🏦 Bankverbindung anzeigen
-    </button>
-
+    <button class="bank-button" onclick="toggleBank()">🏦 Bankverbindung anzeigen</button>
     <div id="bankContent" class="bank-content">
       <img src="bankverbindung.jpeg" alt="Bankverbindung">
     </div>
 
     <div class="social-title">Besuchen Sie uns auch hier:</div>
     <div class="socials">
-
-      <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank" rel="noopener">
+      <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="url(#igGradient)">
           <defs>
             <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
@@ -182,12 +200,11 @@
         </svg>
       </a>
 
-      <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank" rel="noopener" onclick="openYouTubeApp(event)">
+      <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank" onclick="openYouTubeApp(event)">
         <svg viewBox="0 0 24 24" fill="#ff0000">
           <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
         </svg>
       </a>
-
     </div>
   </div>
 
@@ -197,28 +214,24 @@
       content.style.display = content.style.display === "block" ? "none" : "block";
     }
 
-    function openGoogleReview(event) {
-      event.preventDefault();
-
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-
-      if (isMobile) {
-        // 📱 Google Maps App
-        window.location.href = "https://maps.app.goo.gl/TQWXsP5tscrUR5KB7";
-      } else {
-        // 💻 Desktop: direkt zur Bewertung
-        window.open(
-          "https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E",
-          "_blank"
-        );
-      }
-    }
-
     function openYouTubeApp(event) {
       const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
       if (isMobile) {
         event.preventDefault();
         window.location.href = "youtube://www.youtube.com/@HisarEurope";
+      }
+    }
+
+    function openGoogleMaps(event) {
+      event.preventDefault();
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      const mobileLink = "https://maps.app.goo.gl/TQWXsP5tscrUR5KB7";
+      const desktopLink = "https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E&source=g.page.m._&utm_source=gbp&laa=merchant-review-solicitation";
+      
+      if (isMobile) {
+        window.location.href = mobileLink;
+      } else {
+        window.open(desktopLink, "_blank");
       }
     }
   </script>
