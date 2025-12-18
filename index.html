@@ -1,239 +1,231 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Willkommen bei Hisar Europe</title>
-  <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(to bottom, #e6edf7 0%, #f4f7fb 100%);
-      color: #1f2937;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 100vh;
-      margin: 0;
-    }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hisar Europe Landing Page</title>
 
-    .card {
-      background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
-      padding: 32px 26px;
-      border-radius: 16px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
-      text-align: center;
-      max-width: 440px;
-      width: 90%;
-      transition: transform 0.2s;
-    }
+<style>
+  body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    color: #1f2937;
+    scroll-behavior: smooth;
+  }
 
-    .card:hover {
-      transform: translateY(-2px);
-    }
+  /* Fixed Header */
+  header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
 
-    .logo {
-      display: block;
-      margin: 0 auto 12px;
-      max-width: 180px;
-      aspect-ratio: 1/1;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1.5px solid #ddd;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
+  header.shrink {
+    height: 50px;
+    padding: 0 15px;
+  }
 
-    h2 {
-      margin: 6px 0;
-      font-size: 22px;
-      color: #111827;
-    }
+  header img {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+  }
 
-    p {
-      margin: 0 0 22px;
-      font-size: 16px;
-      color: #4b5563;
-    }
+  header.shrink img {
+    height: 30px;
+    width: 30px;
+  }
 
-    a.button,
-    .bank-button {
-      display: block;
-      width: 100%;
-      text-decoration: none;
-      margin: 12px 0;
-      padding: 14px 18px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      transition: 0.2s ease, box-shadow 0.2s ease;
-      color: #fff;
-      cursor: pointer;
-      box-sizing: border-box;
-    }
+  header h1 {
+    margin-left: 12px;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
 
-    a.button:hover,
-    .bank-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    }
+  header.shrink h1 {
+    font-size: 1rem;
+  }
 
-    .bewertung {
-      background: linear-gradient(to right, #2563eb, #3b82f6);
-    }
+  main {
+    padding-top: 80px; /* Platz für fixed header */
+  }
 
-    .touren {
-      background: linear-gradient(to right, #10b981, #34d399);
-    }
+  section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 80px 20px;
+    margin: 20px auto;
+    max-width: 600px;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease;
+  }
 
-    .hadsch {
-      background: linear-gradient(to right, #f59e0b, #fbbf24);
-    }
+  section:hover {
+    transform: translateY(-4px);
+  }
 
-    .bank-button {
-      background: #e6f0fa;
-      color: #1e3a8a;
-      border: none;
-    }
+  section h2 {
+    font-size: 24px;
+    margin-bottom: 12px;
+    color: #111827;
+  }
 
-    .bank-content {
-      margin-top: 16px;
-      display: none;
-    }
+  section p {
+    font-size: 16px;
+    color: #4b5563;
+    margin-bottom: 24px;
+  }
 
-    .bank-content img {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
-    }
+  .button {
+    display: inline-block;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(to right, #2563eb, #3b82f6);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
 
-    .social-title {
-      margin-top: 28px;
-      font-size: 15px;
-      color: #475569;
-    }
+  .button:hover {
+    transform: translateY(-2px);
+    opacity: 0.95;
+  }
 
-    .socials {
-      margin-top: 12px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
+  /* Socials */
+  .socials {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 40px;
+  }
 
-    .social-icon {
-      width: 74px;
-      height: 74px;
-      border-radius: 50%;
-      background: #e6f0fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s ease;
-    }
+  .social-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: #e6f0fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
 
-    .social-icon:hover {
-      background: #d7e7f7;
-      transform: translateY(-3px);
-    }
+  .social-icon:hover {
+    transform: translateY(-3px);
+    background: #d7e7f7;
+  }
 
-    .social-icon svg {
-      width: 36px;
-      height: 36px;
-    }
-
-    .benefit {
-      font-size: 13px;
-      color: #475569;
-      margin-top: 4px;
-    }
-
-    .stars {
-      margin-top: 6px;
-      font-size: 14px;
-      color: #f59e0b;
-    }
-  </style>
+  .social-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+</style>
 </head>
 <body>
-  <div class="card">
 
-    <img src="logo.png" alt="Hisar Europe Logo" class="logo">
+<header id="header">
+  <img src="logo.png" alt="Hisar Europe Logo">
+  <h1>Hisar Europe</h1>
+</header>
 
-    <h2>Willkommen bei Hisar Europe</h2>
-    <p>Was möchten Sie tun?</p>
+<main>
 
-    <!-- ⭐ Google Bewertung CTA -->
-    <a class="button bewertung" href="#" onclick="openGoogleMaps(event)">
-      ⭐ Jetzt Google-Bewertung abgeben
+  <!-- Google Bewertung -->
+  <section>
+    <h2>⭐ Bewerten Sie uns auf Google</h2>
+    <p>Ihre Meinung zählt! Hinterlassen Sie uns eine Bewertung direkt in Google Maps.</p>
+    <a href="#" class="button" onclick="openGoogleMaps(event)">Jetzt bewerten</a>
+  </section>
+
+  <!-- Umra-Tour -->
+  <section>
+    <h2>🌍 Umra-Tour buchen</h2>
+    <p>Reservieren Sie Ihre Umra-Tour bequem online und erleben Sie unvergessliche Momente.</p>
+    <a href="https://umre.hisareurope.com/" target="_blank" class="button">Tour reservieren</a>
+  </section>
+
+  <!-- Hadsch Anmeldung -->
+  <section>
+    <h2>🕋 Für Hadsch 2026 anmelden</h2>
+    <p>Sichern Sie sich Ihren Platz für die Hadsch 2026 direkt auf unserer Webseite.</p>
+    <a href="https://hisareurope.com/hac/#form" target="_blank" class="button">Jetzt anmelden</a>
+  </section>
+
+  <!-- Socials -->
+  <div class="socials">
+    <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="url(#igGradient)">
+        <defs>
+          <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f58529"/>
+            <stop offset="50%" stop-color="#dd2a7b"/>
+            <stop offset="100%" stop-color="#8134af"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8"/>
+      </svg>
     </a>
-    <div class="benefit">Helfen Sie uns mit einer kurzen Bewertung – dauert nur 30 Sekunden!</div>
-    <div class="stars">⭐ ⭐ ⭐ ⭐ ⭐</div>
-
-    <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
-      🌍 Eine Umra-Tour reservieren
+    <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank" onclick="openYouTubeApp(event)">
+      <svg viewBox="0 0 24 24" fill="#ff0000">
+        <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
+      </svg>
     </a>
-    <div class="benefit">Sichern Sie sich Ihren Platz für die nächste Umra-Reise.</div>
-
-    <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank">
-      🕋 Für Hadsch 2026 anmelden
-    </a>
-    <div class="benefit">Planen Sie jetzt Ihre Hadsch-Reise für 2026.</div>
-
-    <button class="bank-button" onclick="toggleBank()">🏦 Bankverbindung anzeigen</button>
-    <div id="bankContent" class="bank-content">
-      <img src="bankverbindung.jpeg" alt="Bankverbindung">
-    </div>
-
-    <div class="social-title">Besuchen Sie uns auch hier:</div>
-    <div class="socials">
-      <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="url(#igGradient)">
-          <defs>
-            <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f58529"/>
-              <stop offset="50%" stop-color="#dd2a7b"/>
-              <stop offset="100%" stop-color="#8134af"/>
-            </linearGradient>
-          </defs>
-          <rect x="3" y="3" width="18" height="18" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="0.8"/>
-        </svg>
-      </a>
-
-      <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank" onclick="openYouTubeApp(event)">
-        <svg viewBox="0 0 24 24" fill="#ff0000">
-          <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
-        </svg>
-      </a>
-    </div>
   </div>
 
-  <script>
-    function toggleBank() {
-      const content = document.getElementById("bankContent");
-      content.style.display = content.style.display === "block" ? "none" : "block";
-    }
+</main>
 
-    function openYouTubeApp(event) {
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile) {
-        event.preventDefault();
-        window.location.href = "youtube://www.youtube.com/@HisarEurope";
-      }
+<script>
+  // Header Shrink beim Scroll
+  window.addEventListener('scroll', () => {
+    const header = document.getElementById('header');
+    if(window.scrollY > 50){
+      header.classList.add('shrink');
+    } else {
+      header.classList.remove('shrink');
     }
+  });
 
-    function openGoogleMaps(event) {
+  // Google Maps Bewertung öffnen
+  function openGoogleMaps(event){
+    event.preventDefault();
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    const url = "https://maps.app.goo.gl/TQWXsP5tscrUR5KB7"; // Dein Google Maps Review Link
+    if(isMobile){
+      window.location.href = url;
+    } else {
+      window.open(url, "_blank");
+    }
+  }
+
+  // YouTube App
+  function openYouTubeApp(event){
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if(isMobile){
       event.preventDefault();
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const mobileLink = "https://maps.app.goo.gl/TQWXsP5tscrUR5KB7";
-      const desktopLink = "https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E&source=g.page.m._&utm_source=gbp&laa=merchant-review-solicitation";
-      
-      if (isMobile) {
-        window.location.href = mobileLink;
-      } else {
-        window.open(desktopLink, "_blank");
-      }
+      window.location.href = "youtube://www.youtube.com/@HisarEurope";
     }
-  </script>
+  }
+</script>
+
 </body>
 </html>
