@@ -143,9 +143,14 @@
     <h2>Willkommen bei Hisar Europe</h2>
     <p>Was möchten Sie tun?</p>
 
-    <!-- Google Maps Button -->
-    <a class="button bewertung" href="#" onclick="openGoogleMaps(event)">
-      📍 Jetzt auf Google Maps bewerten
+    <!-- ⭐ DIREKT ZUR GOOGLE BEWERTUNG -->
+    <a
+      class="button bewertung"
+      href="https://search.google.com/local/writereview?placeid=ChIJg1fE7u4lQEcRyFLRmFn1r1E"
+      target="_blank"
+      rel="noopener"
+    >
+      ⭐ Jetzt Google-Bewertung abgeben
     </a>
 
     <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
@@ -195,21 +200,6 @@
     function toggleBank() {
       const content = document.getElementById("bankContent");
       content.style.display = content.style.display === "block" ? "none" : "block";
-    }
-
-    function openGoogleMaps(event) {
-      event.preventDefault();
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const query = "Hisar Europe";
-
-      if (isMobile) {
-        window.location.href = "geo:0,0?q=" + encodeURIComponent(query);
-      } else {
-        window.open(
-          "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query),
-          "_blank"
-        );
-      }
     }
 
     function openYouTubeApp(event) {
