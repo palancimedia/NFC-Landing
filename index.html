@@ -15,6 +15,10 @@
   </script>
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background: linear-gradient(to bottom, #e6edf7 0%, #f4f7fb 100%);
@@ -22,6 +26,7 @@
       margin: 0;
     }
 
+    /* HEADER */
     .header {
       position: sticky;
       top: 0;
@@ -59,17 +64,18 @@
       font-weight: 600;
     }
 
+    /* LAYOUT */
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 60px 16px 32px;
-      gap: 32px;
+      padding: 48px 16px 32px;
+      gap: 20px; /* näher zusammen */
     }
 
     .card {
       background: #ffffff;
-      padding: 32px 24px;
+      padding: 28px 22px;
       border-radius: 16px;
       box-shadow: 0 12px 32px rgba(0,0,0,0.08);
       text-align: center;
@@ -77,33 +83,57 @@
       width: 100%;
     }
 
-    a.button, .bank-button {
+    .card h2 {
+      margin: 0 0 8px;
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: #4b5563;
+    }
+
+    /* BUTTONS */
+    a.button,
+    .bank-button {
       display: block;
       width: 100%;
-      margin: 12px 0;
-      padding: 16px;
+      margin: 10px 0;
+      padding: 14px;
       border-radius: 12px;
       font-size: 16px;
       font-weight: 600;
       text-decoration: none;
       color: #fff;
       cursor: pointer;
+      text-align: center;
     }
 
-    .bewertung { background: #2563eb; }
-    .touren { background: #3b82f6; }
-    .hadsch { background: #10b981; }
+    a.button:hover,
+    .bank-button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
 
+    .bewertung { background: linear-gradient(to right, #2563eb, #3b82f6); }
+    .touren { background: linear-gradient(to right, #3b82f6, #60a5fa); }
+    .hadsch { background: linear-gradient(to right, #10b981, #34d399); }
+
+    /* BANK */
     .bank-button {
       background: #e6f0fa;
       color: #1e3a8a;
       border: none;
+      max-width: 400px;
     }
 
-    .bank-content { display: none; width: 100%; max-width: 400px; }
+    .bank-content {
+      display: none;
+      max-width: 400px;
+      width: 100%;
+    }
 
     .bank-box {
-      background: #fff;
+      background: #ffffff;
       padding: 16px;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
@@ -128,6 +158,35 @@
       color: #10b981;
       font-weight: 600;
       text-align: center;
+    }
+
+    /* SOCIALS */
+    .socials {
+      margin-top: 24px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .social-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #e6f0fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s ease;
+    }
+
+    .social-icon:hover {
+      background: #d7e7f7;
+      transform: translateY(-3px);
+    }
+
+    .social-icon svg {
+      width: 32px;
+      height: 32px;
     }
   </style>
 </head>
@@ -185,6 +244,30 @@
       </div>
     </div>
 
+    <!-- SOCIALS -->
+    <div class="socials">
+      <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
+        <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
+          <defs>
+            <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#f58529"/>
+              <stop offset="50%" stop-color="#dd2a7b"/>
+              <stop offset="100%" stop-color="#8134af"/>
+            </linearGradient>
+          </defs>
+          <rect x="3" y="3" width="18" height="18" rx="5"/>
+          <circle cx="12" cy="12" r="4"/>
+          <circle cx="17.5" cy="6.5" r="0.8"/>
+        </svg>
+      </a>
+
+      <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
+        <svg viewBox="0 0 24 24" fill="#ff0000">
+          <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
+        </svg>
+      </a>
+    </div>
+
   </div>
 
   <script>
@@ -204,8 +287,7 @@
 
     function openGoogleMaps(e) {
       e.preventDefault();
-      const link = "https://maps.app.goo.gl/TQWXsP5tscrUR5KB7";
-      window.open(link, "_blank");
+      window.open("https://maps.app.goo.gl/TQWXsP5tscrUR5KB7", "_blank");
     }
 
     const translations = {
