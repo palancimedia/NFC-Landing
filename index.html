@@ -18,10 +18,10 @@
     * { box-sizing: border-box; }
 
     body {
+      margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
       background: linear-gradient(to bottom, #e6edf7 0%, #f4f7fb 100%);
       color: #1f2937;
-      margin: 0;
     }
 
     /* HEADER */
@@ -34,8 +34,8 @@
       background: #ffffffcc;
       backdrop-filter: blur(6px);
       padding: 8px 16px;
-      z-index: 1000;
       border-bottom: 1px solid #ddd;
+      z-index: 1000;
     }
 
     .header-logo {
@@ -68,17 +68,17 @@
       flex-direction: column;
       align-items: center;
       padding: 48px 16px 32px;
-      gap: 18px; /* kompakter */
+      gap: 18px;
     }
 
     .card {
-      background: #ffffff;
+      background: #fff;
       padding: 28px 22px;
       border-radius: 16px;
       box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-      text-align: center;
       max-width: 400px;
       width: 100%;
+      text-align: center;
     }
 
     .card h2 {
@@ -101,9 +101,9 @@
       font-size: 16px;
       font-weight: 600;
       text-decoration: none;
-      color: #fff;
       cursor: pointer;
       text-align: center;
+      color: #fff;
     }
 
     a.button:hover,
@@ -132,7 +132,7 @@
     }
 
     .bank-box {
-      background: #ffffff;
+      background: #fff;
       padding: 16px;
       border-radius: 12px;
       box-shadow: 0 6px 18px rgba(0,0,0,0.08);
@@ -159,9 +159,9 @@
       text-align: center;
     }
 
-    /* SOCIALS – näher an Bank */
+    /* SOCIALS */
     .socials {
-      margin-top: 10px; /* <<< HIER der Fix */
+      margin-top: 10px;
       display: flex;
       gap: 18px;
       justify-content: center;
@@ -192,8 +192,9 @@
 
 <body>
 
+  <!-- HEADER -->
   <div class="header">
-    <img src="logo.png" class="header-logo" alt="Logo">
+    <img src="logo.png" alt="Logo" class="header-logo">
     <div class="header-title">Hisar Europe</div>
 
     <div class="language-switcher">
@@ -205,12 +206,13 @@
     </div>
   </div>
 
+  <!-- CONTENT -->
   <div class="container">
 
     <div class="card">
       <h2 data-i18n="review_title">Jetzt bewerten</h2>
       <p data-i18n="review_text">Teilen Sie Ihre Erfahrung mit Hisar Europe</p>
-      <a class="button bewertung" href="#" onclick="openGoogleMaps(event)">
+      <a href="#" class="button bewertung" onclick="openGoogleMaps(event)">
         ⭐ <span data-i18n="review_button">Google-Bewertung abgeben</span>
       </a>
     </div>
@@ -243,7 +245,7 @@
       </div>
     </div>
 
-    <!-- SOCIALS -->
+    <!-- SOCIAL ICONS -->
     <div class="socials">
       <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
         <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
@@ -269,10 +271,11 @@
 
   </div>
 
+  <!-- SCRIPT -->
   <script>
     function toggleBank() {
-      const c = document.getElementById("bankContent");
-      c.style.display = c.style.display === "block" ? "none" : "block";
+      const el = document.getElementById("bankContent");
+      el.style.display = el.style.display === "block" ? "none" : "block";
     }
 
     function copyIBAN() {
@@ -286,7 +289,24 @@
 
     function openGoogleMaps(e) {
       e.preventDefault();
-      window.open("https://maps.app.goo.gl/TQWXsP5tscrUR5KB7", "_blank");
+
+      if (typeof gtag === "function") {
+        gtag("event", "google_review_click", {
+          event_category: "engagement",
+          event_label: "google_review_nfc"
+        });
+      }
+
+      const url =
+        "https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E&source=g.page.m._&utm_source=gbp&laa=merchant-review-solicitation";
+
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+      if (isMobile) {
+        window.location.href = url;
+      } else {
+        window.open(url, "_blank");
+      }
     }
 
     const translations = {
