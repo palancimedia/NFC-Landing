@@ -3,19 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Willkommen bei Hisar Europe</title>
+  <title>Hisar Europe</title>
 
   <!-- Google Analytics 4 -->
-  
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-36E0S5QW48"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36E0S5QW48"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-36E0S5QW48');
+  </script>
 
-  gtag('config', 'G-36E0S5QW48');
-</script>
-  
   <style>
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -24,7 +22,6 @@
       margin: 0;
     }
 
-    /* Sticky Header */
     .header {
       position: sticky;
       top: 0;
@@ -49,7 +46,17 @@
     .header-title {
       font-weight: 600;
       font-size: 18px;
-      color: #111827;
+    }
+
+    .language-switcher {
+      margin-left: auto;
+    }
+
+    .language-switcher select {
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-weight: 600;
     }
 
     .container {
@@ -61,59 +68,31 @@
     }
 
     .card {
-      background: linear-gradient(to bottom, #f8fafc 0%, #ffffff 100%);
+      background: #ffffff;
       padding: 32px 24px;
       border-radius: 16px;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
       text-align: center;
       max-width: 400px;
       width: 100%;
     }
 
-    .card h2 {
-      margin: 0 0 6px;
-      font-size: 22px;
-      color: #111827;
-    }
-
-    .card p {
-      margin: 0 0 22px;
-      font-size: 16px;
-      color: #4b5563;
-    }
-
     a.button, .bank-button {
       display: block;
       width: 100%;
-      text-decoration: none;
       margin: 12px 0;
       padding: 16px;
       border-radius: 12px;
       font-size: 16px;
       font-weight: 600;
-      transition: 0.2s ease;
+      text-decoration: none;
       color: #fff;
       cursor: pointer;
-      box-sizing: border-box;
-      text-align: center;
     }
 
-    a.button:hover, .bank-button:hover {
-      transform: translateY(-1px);
-      opacity: 0.95;
-    }
-
-    .bewertung {
-      background: linear-gradient(to right, #2563eb, #3b82f6);
-    }
-
-    .touren {
-      background: linear-gradient(to right, #3b82f6, #60a5fa);
-    }
-
-    .hadsch {
-      background: linear-gradient(to right, #10b981, #34d399);
-    }
+    .bewertung { background: #2563eb; }
+    .touren { background: #3b82f6; }
+    .hadsch { background: #10b981; }
 
     .bank-button {
       background: #e6f0fa;
@@ -121,139 +100,162 @@
       border: none;
     }
 
-    .bank-content {
-      margin-top: 16px;
-      display: none;
-    }
+    .bank-content { display: none; width: 100%; max-width: 400px; }
 
-    .bank-content img {
-      width: 100%;
-      max-width: 360px;
+    .bank-box {
+      background: #fff;
+      padding: 16px;
       border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+      font-size: 15px;
     }
 
-    .socials {
-      margin-top: 24px;
-      display: flex;
-      justify-content: center;
-      gap: 20px;
+    .copy-button {
+      margin-top: 12px;
+      padding: 12px;
+      width: 100%;
+      border-radius: 10px;
+      border: none;
+      background: #2563eb;
+      color: #fff;
+      font-weight: 600;
+      cursor: pointer;
     }
 
-    .social-icon {
-      width: 64px;
-      height: 64px;
-      border-radius: 50%;
-      background: #e6f0fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s ease;
+    .copy-success {
+      display: none;
+      margin-top: 8px;
+      color: #10b981;
+      font-weight: 600;
+      text-align: center;
     }
-
-    .social-icon:hover {
-      background: #d7e7f7;
-      transform: translateY(-3px);
-    }
-
-    .social-icon svg {
-      width: 32px;
-      height: 32px;
-    }
-
   </style>
 </head>
+
 <body>
 
-  <!-- Sticky Header -->
   <div class="header">
-    <img src="logo.png" alt="Hisar Europe Logo" class="header-logo">
+    <img src="logo.png" class="header-logo" alt="Logo">
     <div class="header-title">Hisar Europe</div>
+
+    <div class="language-switcher">
+      <select onchange="setLanguage(this.value)">
+        <option value="de">🇩🇪 DE</option>
+        <option value="tr">🇹🇷 TR</option>
+        <option value="en">🇬🇧 EN</option>
+      </select>
+    </div>
   </div>
 
   <div class="container">
 
     <div class="card">
-      <h2>Jetzt bewerten</h2>
-      <p>Teilen Sie Ihre Erfahrung mit Hisar Europe auf Google</p>
+      <h2 data-i18n="review_title">Jetzt bewerten</h2>
+      <p data-i18n="review_text">Teilen Sie Ihre Erfahrung mit Hisar Europe</p>
       <a class="button bewertung" href="#" onclick="openGoogleMaps(event)">
-        ⭐ Jetzt Google-Bewertung abgeben
+        ⭐ <span data-i18n="review_button">Google-Bewertung abgeben</span>
       </a>
     </div>
 
     <div class="card">
-      <h2>Umra-Tour reservieren</h2>
-      <p>Planen Sie Ihre spirituelle Reise mit uns</p>
+      <h2 data-i18n="umrah_title">Umra-Tour reservieren</h2>
       <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
-        🌍 Jetzt reservieren
+        🌍 <span data-i18n="umrah_button">Jetzt reservieren</span>
       </a>
     </div>
 
     <div class="card">
-      <h2>Hadsch 2026 anmelden</h2>
-      <p>Sichern Sie sich Ihren Platz für die Hadsch-Reise</p>
+      <h2 data-i18n="hajj_title">Hadsch 2026</h2>
       <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank">
-        🕋 Jetzt anmelden
+        🕋 <span data-i18n="hajj_button">Jetzt anmelden</span>
       </a>
     </div>
 
-    <button class="bank-button" onclick="toggleBank()">🏦 Bankverbindung anzeigen</button>
+    <button class="bank-button" onclick="toggleBank()">🏦 <span data-i18n="bank_button">Bankverbindung anzeigen</span></button>
+
     <div id="bankContent" class="bank-content">
-      <img src="bankverbindung.jpeg" alt="Bankverbindung">
-    </div>
+      <div class="bank-box">
+        <p><strong data-i18n="holder">Kontoinhaber:</strong> Hisar Europe Travel GmbH</p>
+        <p><strong>IBAN:</strong> <span id="iban">DE40 5023 4500 0254 5200 01</span></p>
+        <p><strong data-i18n="bank">Bank:</strong> KT Bank Frankfurt</p>
+        <p data-i18n="bank_info">Verwendungszweck: Name und Nachname</p>
 
-    <div class="socials">
-      <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
-        <svg viewBox="0 0 24 24" fill="none" stroke="url(#igGradient)">
-          <defs>
-            <linearGradient id="igGradient" x1="0%" y1="100%" x2="100%" y2="0%">
-              <stop offset="0%" stop-color="#f58529"/>
-              <stop offset="50%" stop-color="#dd2a7b"/>
-              <stop offset="100%" stop-color="#8134af"/>
-            </linearGradient>
-          </defs>
-          <rect x="3" y="3" width="18" height="18" rx="5"/>
-          <circle cx="12" cy="12" r="4"/>
-          <circle cx="17.5" cy="6.5" r="0.8"/>
-        </svg>
-      </a>
-
-      <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank" onclick="openYouTubeApp(event)">
-        <svg viewBox="0 0 24 24" fill="#ff0000">
-          <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
-        </svg>
-      </a>
+        <button class="copy-button" onclick="copyIBAN()">📋 IBAN kopieren</button>
+        <div id="copySuccess" class="copy-success">✓ IBAN kopiert</div>
+      </div>
     </div>
 
   </div>
 
   <script>
     function toggleBank() {
-      const content = document.getElementById("bankContent");
-      content.style.display = content.style.display === "block" ? "none" : "block";
+      const c = document.getElementById("bankContent");
+      c.style.display = c.style.display === "block" ? "none" : "block";
     }
 
-    function openYouTubeApp(event) {
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      if (isMobile) {
-        event.preventDefault();
-        window.location.href = "youtube://www.youtube.com/@HisarEurope";
-      }
+    function copyIBAN() {
+      navigator.clipboard.writeText(document.getElementById("iban").innerText)
+        .then(() => {
+          const s = document.getElementById("copySuccess");
+          s.style.display = "block";
+          setTimeout(() => s.style.display = "none", 2000);
+        });
     }
 
-    function openGoogleMaps(event) {
-      event.preventDefault();
-      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-      const reviewLink = "https://maps.app.goo.gl/TQWXsP5tscrUR5KB7";
+    function openGoogleMaps(e) {
+      e.preventDefault();
+      const link = "https://maps.app.goo.gl/TQWXsP5tscrUR5KB7";
+      window.open(link, "_blank");
+    }
 
-      if (isMobile) {
-        window.location.href = reviewLink; // öffnet direkt die Maps App auf mobilen Geräten
-      } else {
-        window.open(reviewLink, "_blank"); // öffnet neuen Tab auf Desktop
+    const translations = {
+      de: {
+        review_title: "Jetzt bewerten",
+        review_text: "Teilen Sie Ihre Erfahrung mit Hisar Europe",
+        review_button: "Google-Bewertung abgeben",
+        umrah_title: "Umra-Tour reservieren",
+        umrah_button: "Jetzt reservieren",
+        hajj_title: "Hadsch 2026",
+        hajj_button: "Jetzt anmelden",
+        bank_button: "Bankverbindung anzeigen",
+        holder: "Kontoinhaber:",
+        bank: "Bank:",
+        bank_info: "Verwendungszweck: Name und Nachname"
+      },
+      tr: {
+        review_title: "Değerlendirme yap",
+        review_text: "Hisar Europe deneyiminizi paylaşın",
+        review_button: "Google yorumu bırak",
+        umrah_title: "Umre turu rezervasyonu",
+        umrah_button: "Şimdi rezervasyon yap",
+        hajj_title: "Hac 2026",
+        hajj_button: "Şimdi kayıt ol",
+        bank_button: "Banka bilgilerini göster",
+        holder: "Hesap sahibi:",
+        bank: "Banka:",
+        bank_info: "Açıklama: Ad ve Soyad"
+      },
+      en: {
+        review_title: "Leave a review",
+        review_text: "Share your experience with Hisar Europe",
+        review_button: "Leave Google review",
+        umrah_title: "Book Umrah tour",
+        umrah_button: "Book now",
+        hajj_title: "Hajj 2026",
+        hajj_button: "Register now",
+        bank_button: "Show bank details",
+        holder: "Account holder:",
+        bank: "Bank:",
+        bank_info: "Reference: First and Last Name"
       }
+    };
+
+    function setLanguage(lang) {
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        el.innerText = translations[lang][el.dataset.i18n];
+      });
     }
   </script>
 
 </body>
 </html>
-
