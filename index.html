@@ -154,6 +154,12 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: 0.2s ease;
+    }
+
+    .social-icon:hover {
+      background: #d7e7f7;
+      transform: translateY(-3px);
     }
 
     .social-icon svg { width: 30px; height: 30px; }
@@ -199,28 +205,39 @@
     </a>
   </div>
 
-  <!-- NEU: PDF -->
+  <button class="bank-button" onclick="toggleBank()">🏦 <span data-i18n="bank_button">Bankverbindung anzeigen</span></button>
+
+  <div id="bankContent" class="bank-content">
+    <div class="bank-box">
+      <p><strong data-i18n="holder">Kontoinhaber:</strong> Hisar Europe Travel GmbH</p>
+      <p><strong>IBAN:</strong> <span id="iban">DE40 5023 4500 0254 5200 01</span></p>
+      <p><strong data-i18n="bank">Bank:</strong> KT Bank Frankfurt</p>
+      <p data-i18n="bank_info">Verwendungszweck: Name und Nachname</p>
+      <button class="copy-button" onclick="copyIBAN()">📋 IBAN kopieren</button>
+      <div id="copySuccess" class="copy-success">✓ IBAN kopiert</div>
+    </div>
+  </div>
+
+  <!-- NEUE SPALTEN: PDF, TUTORIAL, FAQ -->
   <div class="card">
-    <h2 data-i18n="pdf_title">Das Umra Handbuch</h2>
-    <p data-i18n="pdf_sub">PDF herunterladen</p>
+    <h2 data-i18n-new="pdf_title">Das Umra Handbuch</h2>
+    <p data-i18n-new="pdf_sub">PDF herunterladen</p>
     <a class="button neutral" href="Das-Umra-Handbuch.pdf" target="_blank">📄 PDF öffnen</a>
   </div>
 
-  <!-- NEU: Tutorial -->
   <div class="card">
-    <h2 data-i18n="tutorial_title">Pass lesen</h2>
-    <p data-i18n="tutorial_sub">Video-Anleitung</p>
+    <h2 data-i18n-new="tutorial_title">Pass lesen</h2>
+    <p data-i18n-new="tutorial_sub">Video-Anleitung</p>
     <a class="button neutral" href="tutorial.html">▶️ Video ansehen</a>
   </div>
 
-  <!-- NEU: FAQ -->
   <div class="card">
-    <h2 data-i18n="faq_title">FAQ</h2>
-    <p data-i18n="faq_sub">Häufige Fragen</p>
+    <h2 data-i18n-new="faq_title">FAQ</h2>
+    <p data-i18n-new="faq_sub">Häufige Fragen</p>
     <a class="button neutral" href="faq.html">❓ FAQ öffnen</a>
   </div>
 
-  <!-- SOCIALS -->
+  <!-- SOCIAL ICONS -->
   <div class="socials">
     <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
       <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
@@ -233,17 +250,18 @@
         </defs>
         <rect x="3" y="3" width="18" height="18" rx="5"/>
         <circle cx="12" cy="12" r="4"/>
+        <circle cx="17.5" cy="6.5" r="0.8"/>
       </svg>
     </a>
 
     <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
       <svg viewBox="0 0 24 24" fill="#ff0000">
-        <path d="M9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
+        <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10c0-1.9-.2-3.8-.2-3.8zM9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
       </svg>
     </a>
 
     <a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
-      <svg viewBox="0 0 32 32" fill="#25D366">
+      <svg viewBox="0 0 24 24" fill="#25D366">
         <path d="M16 2C8.3 2 2 8.1 2 15.6c0 2.7.8 5.3 2.3 7.5L2 30l7.2-2.2c2.1 1.1 4.4 1.7 6.8 1.7 7.7 0 14-6.1 14-13.9C30 8.1 23.7 2 16 2z"/>
       </svg>
     </a>
@@ -252,19 +270,37 @@
 </div>
 
 <script>
-  function openGoogleMaps(e) {
+  // Bestehende Funktionen
+  function toggleBank() {
+    const el = document.getElementById("bankContent");
+    el.style.display = el.style.display === "block" ? "none" : "block";
+  }
+  function copyIBAN() {
+    navigator.clipboard.writeText(document.getElementById("iban").innerText)
+      .then(()=>{document.getElementById("copySuccess").style.display="block";
+                 setTimeout(()=>{document.getElementById("copySuccess").style.display="none";},2000)});
+  }
+  function openGoogleMaps(e){
     e.preventDefault();
-    window.open("https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E", "_blank");
+    window.open("https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E","_blank");
   }
 
-  function setLanguage(lang) {
-    const t = {
-      de:{pdf_title:"Das Umra Handbuch",pdf_sub:"PDF herunterladen",tutorial_title:"Pass scannen",tutorial_sub:"Video-Anleitung",faq_title:"FAQ",faq_sub:"Häufige Fragen"},
+  // Sprachumschaltung für neue Spalten
+  function setLanguage(lang){
+    const translations = {
+      de:{pdf_title:"Das Umra Handbuch",pdf_sub:"PDF herunterladen",tutorial_title:"Pass lesen",tutorial_sub:"Video-Anleitung",faq_title:"FAQ",faq_sub:"Häufige Fragen"},
       tr:{pdf_title:"Umre kitapçığı",pdf_sub:"PDF indir",tutorial_title:"Pasaport nasıl okutulur",tutorial_sub:"Video anlatım",faq_title:"SSS",faq_sub:"Sık sorulan sorular"},
       en:{pdf_title:"The Umrah Guide",pdf_sub:"Download PDF",tutorial_title:"How to scan passport",tutorial_sub:"Video tutorial",faq_title:"FAQ",faq_sub:"Frequently asked questions"}
     };
-    document.querySelectorAll("[data-i18n]").forEach(el=>{
-      el.innerText = t[lang][el.dataset.i18n] || el.innerText;
+    document.querySelectorAll("[data-i18n-new]").forEach(el=>{
+      el.innerText = translations[lang][el.dataset.i18nNew] || el.innerText;
+    });
+
+    // EXISTIERENDE KARTEN
+    const existingKeys = ["review_title","review_text","review_button","umrah_title","umrah_button","hajj_title","hajj_button","bank_button","holder","bank","bank_info"];
+    existingKeys.forEach(k=>{
+      const el=document.querySelector("[data-i18n='"+k+"']");
+      if(el && translations[lang][k]) el.innerText=translations[lang][k];
     });
   }
 </script>
