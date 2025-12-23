@@ -16,6 +16,7 @@
 
   <style>
     * { box-sizing: border-box; }
+
     body {
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
@@ -78,6 +79,15 @@
       text-align: center;
     }
 
+    .card h2 {
+      margin: 0 0 8px;
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: #4b5563;
+    }
+
     a.button {
       display: block;
       width: 100%;
@@ -87,12 +97,22 @@
       font-size: 16px;
       font-weight: 600;
       text-decoration: none;
+      cursor: pointer;
+      text-align: center;
       color: #fff;
-      background: linear-gradient(to right, #3b82f6, #60a5fa);
     }
 
+    a.button:hover {
+      opacity: 0.95;
+      transform: translateY(-1px);
+    }
+
+    .bewertung { background: linear-gradient(to right, #2563eb, #3b82f6); }
+    .touren { background: linear-gradient(to right, #3b82f6, #60a5fa); }
+    .hadsch { background: linear-gradient(to right, #10b981, #34d399); }
+
     .socials {
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
       gap: 18px;
       justify-content: center;
@@ -110,43 +130,74 @@
     }
 
     .social-icon:hover {
+      background: #d7e7f7;
       transform: translateY(-3px);
     }
 
-    .faq {
-      max-width: 400px;
-      background: #fff;
-      padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-      font-size: 15px;
-    }
-
-    video {
-      width: 100%;
-      border-radius: 12px;
+    .social-icon svg {
+      width: 30px;
+      height: 30px;
     }
   </style>
 </head>
 
 <body>
 
+<div class="header">
+  <img src="logo.png" class="header-logo">
+  <div class="header-title">Hisar Europe</div>
+  <div class="language-switcher">
+    <select onchange="setLanguage(this.value)">
+      <option value="de">🇩🇪 DE</option>
+      <option value="tr">🇹🇷 TR</option>
+      <option value="en">🇬🇧 EN</option>
+    </select>
+  </div>
+</div>
+
 <div class="container">
+
+  <div class="card">
+    <h2 data-i18n="review_title">Jetzt bewerten</h2>
+    <p data-i18n="review_text">Teilen Sie Ihre Erfahrung</p>
+    <a class="button bewertung" href="#" onclick="openGoogleMaps(event)">
+      ⭐ <span data-i18n="review_button"></span>
+    </a>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="umrah_title"></h2>
+    <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
+      🌍 <span data-i18n="umrah_button"></span>
+    </a>
+  </div>
+
+  <div class="card">
+    <h2 data-i18n="hajj_title"></h2>
+    <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank">
+      🕋 <span data-i18n="hajj_button"></span>
+    </a>
+  </div>
 
   <!-- PDF -->
   <div class="card">
-    <a href="Das Umra Handbuch PDF.pdf" class="button" data-i18n="pdf" target="_blank"></a>
+    <h2 data-i18n="pdf_title"></h2>
+    <a class="button touren" id="pdfLink" target="_blank">
+      📄 <span data-i18n="pdf_button"></span>
+    </a>
   </div>
 
-  <!-- VIDEO -->
+  <!-- Tutorial -->
   <div class="card">
-    <h3 data-i18n="tutorial"></h3>
-    <video controls src="passport-tutorial.mp4"></video>
+    <h2 data-i18n="tutorial_title"></h2>
+    <a class="button touren" href="tutorial.html">
+      ▶️ <span data-i18n="tutorial_button"></span>
+    </a>
   </div>
 
   <!-- FAQ -->
-  <div class="faq">
-    <strong>FAQ</strong>
+  <div class="card">
+    <h2>FAQ</h2>
     <p>• Reisepass mindestens 6 Monate gültig</p>
     <p>• Visum wird von uns organisiert</p>
     <p>• Unterstützung vor Ort inklusive</p>
@@ -154,19 +205,30 @@
 
   <!-- SOCIALS -->
   <div class="socials">
-    <!-- Instagram -->
     <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
-      📷
+      <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
+        <defs>
+          <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f58529"/>
+            <stop offset="50%" stop-color="#dd2a7b"/>
+            <stop offset="100%" stop-color="#8134af"/>
+          </linearGradient>
+        </defs>
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+      </svg>
     </a>
 
-    <!-- YouTube -->
     <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
-      ▶️
+      <svg viewBox="0 0 24 24" fill="#ff0000">
+        <path d="M9.5 14.6V7.9l6.2 3.4-6.2 3.3z"/>
+      </svg>
     </a>
 
-    <!-- WhatsApp -->
-    <a class="social-icon" href="WHATSAPP_LINK_HIER_EINTRAGEN" target="_blank">
-      💬
+    <a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
+      <svg viewBox="0 0 24 24" fill="#25D366">
+        <path d="M20.5 3.5A11 11 0 0 0 3.4 17.6L2 22l4.5-1.3A11 11 0 1 0 20.5 3.5z"/>
+      </svg>
     </a>
   </div>
 
@@ -175,23 +237,57 @@
 <script>
 const translations = {
   de: {
-    pdf: "Das Umra Handbuch PDF",
-    tutorial: "Wie liest man einen Pass aus"
+    review_title: "Jetzt bewerten",
+    review_text: "Teilen Sie Ihre Erfahrung",
+    review_button: "Google-Bewertung abgeben",
+    umrah_title: "Umra-Tour reservieren",
+    umrah_button: "Jetzt reservieren",
+    hajj_title: "Hadsch 2026",
+    hajj_button: "Jetzt anmelden",
+    pdf_title: "Dokumente",
+    pdf_button: "Das Umra Handbuch PDF",
+    tutorial_title: "Tutorial",
+    tutorial_button: "Wie liest man einen Pass aus"
   },
   tr: {
-    pdf: "Umre kitapçığı PDF",
-    tutorial: "Pasaport nasıl okutulur"
+    review_title: "Değerlendirme yap",
+    review_text: "Deneyiminizi paylaşın",
+    review_button: "Google yorumu bırak",
+    umrah_title: "Umre turu rezervasyonu",
+    umrah_button: "Şimdi rezervasyon yap",
+    hajj_title: "Hac 2026",
+    hajj_button: "Şimdi kayıt ol",
+    pdf_title: "Belgeler",
+    pdf_button: "Umre kitapcigi PDF",
+    tutorial_title: "Eğitim",
+    tutorial_button: "Pasaport nasıl okutulur"
   },
   en: {
-    pdf: "The Umrah Guide PDF",
-    tutorial: "How to scan a passport"
+    review_title: "Leave a review",
+    review_text: "Share your experience",
+    review_button: "Leave Google review",
+    umrah_title: "Book Umrah tour",
+    umrah_button: "Book now",
+    hajj_title: "Hajj 2026",
+    hajj_button: "Register now",
+    pdf_title: "Documents",
+    pdf_button: "The Umrah Guide PDF",
+    tutorial_title: "Tutorial",
+    tutorial_button: "How to scan a passport"
   }
+};
+
+const pdfFiles = {
+  de: "Das Umra Handbuch PDF.pdf",
+  tr: "Umre kitapcigi PDF.pdf",
+  en: "The umrah guide PDF.pdf"
 };
 
 function setLanguage(lang) {
   document.querySelectorAll("[data-i18n]").forEach(el => {
     el.innerText = translations[lang][el.dataset.i18n];
   });
+  document.getElementById("pdfLink").href = pdfFiles[lang];
 }
 </script>
 
