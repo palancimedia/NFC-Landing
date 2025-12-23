@@ -1,175 +1,233 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hisar Europe</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hisar Europe</title>
 
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36E0S5QW48"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-36E0S5QW48');
-  </script>
+<!-- Google Analytics 4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-36E0S5QW48"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-36E0S5QW48');
+</script>
 
-  <style>
-    * { box-sizing: border-box; }
+<style>
+* { box-sizing: border-box; }
 
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: linear-gradient(to bottom, #e6edf7 0%, #f4f7fb 100%);
-      color: #1f2937;
-    }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(to bottom, #e6edf7 0%, #f4f7fb 100%);
+  color: #1f2937;
+}
 
-    .header {
-      position: sticky;
-      top: 0;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #ffffffcc;
-      backdrop-filter: blur(6px);
-      padding: 8px 16px;
-      border-bottom: 1px solid #ddd;
-      z-index: 1000;
-    }
+/* HEADER */
+.header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffffcc;
+  backdrop-filter: blur(6px);
+  padding: 8px 16px;
+  border-bottom: 1px solid #ddd;
+  z-index: 1000;
+}
 
-    .header-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 1px solid #ddd;
-    }
+.header-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #ddd;
+}
 
-    .header-title {
-      font-weight: 600;
-      font-size: 18px;
-    }
+.header-title {
+  font-weight: 600;
+  font-size: 18px;
+}
 
-    .language-switcher {
-      margin-left: auto;
-    }
+.language-switcher {
+  margin-left: auto;
+}
 
-    .language-switcher select {
-      padding: 6px 10px;
-      border-radius: 8px;
-      border: 1px solid #ddd;
-      font-weight: 600;
-    }
+.language-switcher select {
+  padding: 6px 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  font-weight: 600;
+}
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 48px 16px 32px;
-      gap: 18px;
-    }
+/* LAYOUT */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 16px 32px;
+  gap: 18px;
+}
 
-    .card {
-      background: #fff;
-      padding: 28px 22px;
-      border-radius: 16px;
-      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
-      max-width: 400px;
-      width: 100%;
-      text-align: center;
-    }
+.card {
+  background: #fff;
+  padding: 28px 22px;
+  border-radius: 16px;
+  box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+}
 
-    .card h2 { margin: 0 0 8px; }
-    .card p { margin: 0 0 16px; color: #4b5563; }
+/* Blautöne für anklickbare Titel */
+.card:nth-child(4) h2 { color: #60a5fa; }
+.card:nth-child(5) h2 { color: #3b82f6; }
+.card:nth-child(6) h2 { color: #2563eb; }
+.card:nth-child(7) h2 { color: #1e40af; }
 
-    a.button {
-      display: block;
-      width: 100%;
-      margin: 10px 0;
-      padding: 14px;
-      border-radius: 12px;
-      font-size: 16px;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      color: #fff;
-    }
+/* Untertitel */
+.card p {
+  margin: 0 0 16px;
+  color: #4b5563;
+}
 
-    .bewertung { background: linear-gradient(to right, #2563eb, #3b82f6); }
-    .touren { background: linear-gradient(to right, #3b82f6, #60a5fa); }
-    .hadsch { background: linear-gradient(to right, #10b981, #34d399); }
-    .neutral { background: linear-gradient(to right, #64748b, #94a3b8); }
+/* BUTTONS */
+a.button,
+.bank-button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+}
 
-    .bank-button {
-      background: #e6f0fa;
-      color: #1e3a8a;
-      border: none;
-      width: 100%;
-      max-width: 400px;
-      padding: 14px;
-      border-radius: 12px;
-      font-weight: 600;
-      cursor: pointer;
-    }
+a.button:hover,
+.bank-button:hover {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
 
-    .bank-content { display: none; max-width: 400px; width: 100%; }
+.bewertung { background: linear-gradient(to right, #2563eb, #3b82f6); }
+.touren { background: linear-gradient(to right, #3b82f6, #60a5fa); }
+.hadsch { background: linear-gradient(to right, #10b981, #34d399); }
 
-    .bank-box {
-      background: #fff;
-      padding: 16px;
-      border-radius: 12px;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
-    }
+/* BANK */
+.bank-button {
+  background: #e6f0fa;
+  color: #1e3a8a;
+  border: none;
+  max-width: 400px;
+  margin-top: 6px;
+}
 
-    .copy-button {
-      margin-top: 12px;
-      padding: 12px;
-      width: 100%;
-      border-radius: 10px;
-      border: none;
-      background: #2563eb;
-      color: #fff;
-      font-weight: 600;
-    }
+.bank-content {
+  display: none;
+  max-width: 400px;
+  width: 100%;
+}
 
-    .copy-success {
-      display: none;
-      margin-top: 8px;
-      color: #10b981;
-      font-weight: 600;
-    }
+.bank-box {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  font-size: 15px;
+}
 
-    .socials {
-      margin-top: 10px;
-      display: flex;
-      gap: 18px;
-      justify-content: center;
-    }
+.copy-button {
+  margin-top: 12px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: none;
+  background: #2563eb;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
 
-    .social-icon {
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      background: #e6f0fa;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: 0.2s ease;
-    }
+.copy-success {
+  display: none;
+  margin-top: 8px;
+  color: #10b981;
+  font-weight: 600;
+  text-align: center;
+}
 
-    .social-icon:hover {
-      background: #d7e7f7;
-      transform: translateY(-3px);
-    }
+/* SOCIALS */
+.socials {
+  margin-top: 10px;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
 
-    .social-icon svg { width: 30px; height: 30px; }
-  </style>
+.social-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #e6f0fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s ease;
+}
+
+.social-icon:hover {
+  background: #d7e7f7;
+  transform: translateY(-3px);
+}
+
+.social-icon svg {
+  width: 30px;
+  height: 30px;
+}
+
+/* Modal Video */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  padding: 20px;
+  border-radius: 16px;
+  max-width: 600px;
+  text-align: center;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+</style>
 </head>
 
 <body>
 
+<!-- HEADER -->
 <div class="header">
-  <img src="logo.png" class="header-logo">
+  <img src="logo.png" alt="Logo" class="header-logo">
   <div class="header-title">Hisar Europe</div>
   <div class="language-switcher">
     <select onchange="setLanguage(this.value)">
@@ -180,9 +238,10 @@
   </div>
 </div>
 
+<!-- CONTENT -->
 <div class="container">
 
-  <!-- EXISTIERENDE KARTEN -->
+  <!-- Karte 1: Google Bewertung -->
   <div class="card">
     <h2 data-i18n="review_title">Jetzt bewerten</h2>
     <p data-i18n="review_text">Teilen Sie Ihre Erfahrung mit Hisar Europe</p>
@@ -191,24 +250,50 @@
     </a>
   </div>
 
+  <!-- Karte 2: Umra-Tour -->
   <div class="card">
     <h2 data-i18n="umrah_title">Umra-Tour reservieren</h2>
+    <p data-i18n="umrah_text">Buchen Sie Ihre Umra-Reise bequem online</p>
     <a class="button touren" href="https://umre.hisareurope.com/" target="_blank">
       🌍 <span data-i18n="umrah_button">Jetzt reservieren</span>
     </a>
   </div>
 
+  <!-- Karte 3: Hadsch 2026 -->
   <div class="card">
     <h2 data-i18n="hajj_title">Hadsch 2026</h2>
+    <p data-i18n="hajj_text">Melden Sie sich für die Hadsch-Reise 2026 an</p>
     <a class="button hadsch" href="https://hisareurope.com/hac/#form" target="_blank">
       🕋 <span data-i18n="hajj_button">Jetzt anmelden</span>
     </a>
   </div>
 
-  <button class="bank-button" onclick="toggleBank()">🏦 <span data-i18n="bank_button">Bankverbindung anzeigen</span></button>
+  <!-- Karte 4: PDF Umrah Guide -->
+  <div class="card">
+    <h2 data-i18n="pdf_title">Das Umra Handbuch PDF</h2>
+    <p data-i18n="pdf_text">Laden Sie das PDF herunter</p>
+    <a href="Das Umra Handbuch PDF.pdf" target="_blank" class="button">📄 PDF öffnen</a>
+  </div>
 
+  <!-- Karte 5: Tutorial Video -->
+  <div class="card">
+    <h2 data-i18n="video_title">Pasaport nasıl okutulur</h2>
+    <p data-i18n="video_text">Klicken Sie, um das Video anzusehen</p>
+    <a href="#" class="button" onclick="openVideoModal()">▶ Video ansehen</a>
+  </div>
+
+  <!-- Karte 6: FAQ -->
+  <div class="card">
+    <h2>FAQ</h2>
+    <p>Klicken, um zur FAQ-Seite zu gelangen</p>
+    <a href="faq.html" class="button">Zur FAQ</a>
+  </div>
+
+  <!-- Bankverbindung -->
+  <button class="bank-button" onclick="toggleBank()">🏦 <span data-i18n="bank_button">Bankverbindung anzeigen</span></button>
   <div id="bankContent" class="bank-content">
     <div class="bank-box">
+      <img src="bankinfo.png" style="width:100%;border-radius:12px;margin-bottom:12px;">
       <p><strong data-i18n="holder">Kontoinhaber:</strong> Hisar Europe Travel GmbH</p>
       <p><strong>IBAN:</strong> <span id="iban">DE40 5023 4500 0254 5200 01</span></p>
       <p><strong data-i18n="bank">Bank:</strong> KT Bank Frankfurt</p>
@@ -216,25 +301,6 @@
       <button class="copy-button" onclick="copyIBAN()">📋 IBAN kopieren</button>
       <div id="copySuccess" class="copy-success">✓ IBAN kopiert</div>
     </div>
-  </div>
-
-  <!-- NEUE SPALTEN: PDF, TUTORIAL, FAQ -->
-  <div class="card">
-    <h2 data-i18n-new="pdf_title">Das Umra Handbuch</h2>
-    <p data-i18n-new="pdf_sub">PDF herunterladen</p>
-    <a class="button neutral" href="Das-Umra-Handbuch.pdf" target="_blank">📄 PDF öffnen</a>
-  </div>
-
-  <div class="card">
-    <h2 data-i18n-new="tutorial_title">Pass lesen</h2>
-    <p data-i18n-new="tutorial_sub">Video-Anleitung</p>
-    <a class="button neutral" href="tutorial.html">▶️ Video ansehen</a>
-  </div>
-
-  <div class="card">
-    <h2 data-i18n-new="faq_title">FAQ</h2>
-    <p data-i18n-new="faq_sub">Häufige Fragen</p>
-    <a class="button neutral" href="faq.html">❓ FAQ öffnen</a>
   </div>
 
   <!-- SOCIAL ICONS -->
@@ -262,48 +328,70 @@
 
     <a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
       <svg viewBox="0 0 24 24" fill="#25D366">
-        <path d="M16 2C8.3 2 2 8.1 2 15.6c0 2.7.8 5.3 2.3 7.5L2 30l7.2-2.2c2.1 1.1 4.4 1.7 6.8 1.7 7.7 0 14-6.1 14-13.9C30 8.1 23.7 2 16 2z"/>
+        <path d="M12 0C5.373 0 0 5.373 0 12c0 2.116.554 4.094 1.523 5.802L0 24l6.363-1.5C8.927 23.446 10.957 24 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm6.053 17.345c-.253.7-1.5 1.31-2.065 1.386-.545.073-1.212.104-3.163-.952-2.549-1.345-4.17-4.03-4.304-4.21-.134-.18-1.11-1.503-1.11-2.864 0-1.36.708-2.033.96-2.312.252-.28.548-.352.733-.352.185 0 .365.002.527.004.17.003.398-.064.625.479.226.544.77 1.878.838 2.015.068.137.114.28.025.45-.088.17-.133.28-.26.44-.126.157-.27.352-.387.47-.128.128-.26.283-.11.556.15.27.665 1.1 1.425 1.78.98.864 1.767 1.14 2.044 1.268.277.126.44.108.603-.064.162-.174.697-.806.88-1.082.183-.275.365-.229.627-.138.26.09 1.637.77 1.923.908.285.14.475.209.544.33.068.12.068.693-.185 1.394z"/>
       </svg>
     </a>
   </div>
 
 </div>
 
+<!-- Modal Video -->
+<div id="videoModal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeVideoModal()">&times;</span>
+    <video width="100%" controls>
+      <source src="tutorial.mp4" type="video/mp4">
+      Ihr Browser unterstützt kein Video-Tag.
+    </video>
+  </div>
+</div>
+
+<!-- SCRIPT -->
 <script>
-  // Bestehende Funktionen
-  function toggleBank() {
-    const el = document.getElementById("bankContent");
-    el.style.display = el.style.display === "block" ? "none" : "block";
-  }
-  function copyIBAN() {
-    navigator.clipboard.writeText(document.getElementById("iban").innerText)
-      .then(()=>{document.getElementById("copySuccess").style.display="block";
-                 setTimeout(()=>{document.getElementById("copySuccess").style.display="none";},2000)});
-  }
-  function openGoogleMaps(e){
-    e.preventDefault();
-    window.open("https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E","_blank");
-  }
+function toggleBank() {
+  const el = document.getElementById("bankContent");
+  el.style.display = el.style.display === "block" ? "none" : "block";
+}
 
-  // Sprachumschaltung für neue Spalten
-  function setLanguage(lang){
-    const translations = {
-      de:{pdf_title:"Das Umra Handbuch",pdf_sub:"PDF herunterladen",tutorial_title:"Pass lesen",tutorial_sub:"Video-Anleitung",faq_title:"FAQ",faq_sub:"Häufige Fragen"},
-      tr:{pdf_title:"Umre kitapçığı",pdf_sub:"PDF indir",tutorial_title:"Pasaport nasıl okutulur",tutorial_sub:"Video anlatım",faq_title:"SSS",faq_sub:"Sık sorulan sorular"},
-      en:{pdf_title:"The Umrah Guide",pdf_sub:"Download PDF",tutorial_title:"How to scan passport",tutorial_sub:"Video tutorial",faq_title:"FAQ",faq_sub:"Frequently asked questions"}
-    };
-    document.querySelectorAll("[data-i18n-new]").forEach(el=>{
-      el.innerText = translations[lang][el.dataset.i18nNew] || el.innerText;
+function copyIBAN() {
+  navigator.clipboard.writeText(document.getElementById("iban").innerText)
+    .then(() => {
+      const s = document.getElementById("copySuccess");
+      s.style.display = "block";
+      setTimeout(() => s.style.display = "none", 2000);
     });
+}
 
-    // EXISTIERENDE KARTEN
-    const existingKeys = ["review_title","review_text","review_button","umrah_title","umrah_button","hajj_title","hajj_button","bank_button","holder","bank","bank_info"];
-    existingKeys.forEach(k=>{
-      const el=document.querySelector("[data-i18n='"+k+"']");
-      if(el && translations[lang][k]) el.innerText=translations[lang][k];
-    });
+function openGoogleMaps(e) {
+  e.preventDefault();
+  if(typeof gtag === "function") {
+    gtag("event","google_review_click",{event_category:"engagement",event_label:"google_review_nfc"});
   }
-</script>
+  const url="https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E&source=g.page.m._&utm_source=gbp&laa=merchant-review-solicitation";
+  const isMobile=/iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if(isMobile) window.location.href=url; else window.open(url,"_blank");
+}
 
-</body>
-</html>
+// Video Modal
+function openVideoModal() { document.getElementById('videoModal').style.display='block'; }
+function closeVideoModal() { document.getElementById('videoModal').style.display='none'; }
+
+// Language Switch
+const translations = {
+  de:{
+    review_title:"Jetzt bewerten",
+    review_text:"Teilen Sie Ihre Erfahrung mit Hisar Europe",
+    review_button:"Google-Bewertung abgeben",
+    umrah_title:"Umra-Tour reservieren",
+    umrah_text:"Buchen Sie Ihre Umra-Reise bequem online",
+    umrah_button:"Jetzt reservieren",
+    hajj_title:"Hadsch 2026",
+    hajj_text:"Melden Sie sich für die Hadsch-Reise 2026 an",
+    hajj_button:"Jetzt anmelden",
+    pdf_title:"Das Umra Handbuch PDF",
+    pdf_text:"Laden Sie das PDF herunter",
+    video_title:"Pasaport wie man scannt",
+    video_text:"Klicken Sie, um das Video anzusehen",
+    bank_button:"Bankverbindung anzeigen",
+    holder:"Kontoinhaber:",
+   
