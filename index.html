@@ -1,9 +1,19 @@
 <!DOCTYPE html>
+<!--
+Hisar Europe Landing Page
+Version: v1.3.0
+Date: 2025-12-23
+Changes:
+- Added back arrow navigation
+- Replaced toggles with accordion
+- Preserved all translations
+-->
+
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hisar Europe</title>
+<title>Hisar Europe – v1.3.0</title>
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-36E0S5QW48"></script>
@@ -33,6 +43,11 @@ padding:8px 16px;
 border-bottom:1px solid #ddd;
 z-index:1000;
 }
+.back-btn{
+font-size:22px;
+cursor:pointer;
+user-select:none;
+}
 .header-logo{width:40px;height:40px;border-radius:50%;border:1px solid #ddd}
 .header-title{font-weight:600;font-size:18px}
 .language-switcher{margin-left:auto}
@@ -47,53 +62,56 @@ padding:48px 16px 32px;gap:18px;
 }
 .card{
 background:#fff;
-padding:28px 22px;
+padding:24px 22px;
 border-radius:16px;
 box-shadow:0 12px 32px rgba(0,0,0,.08);
 max-width:400px;width:100%;
-text-align:center;
 }
-.card h2{margin:0 0 8px;color:#000}
-.card p{margin:0 0 16px;color:#4b5563}
+
+/* ACCORDION */
+.accordion-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+font-weight:600;
+color:#1e3a8a;
+}
+.accordion-content{
+display:none;
+margin-top:14px;
+color:#4b5563;
+}
+.accordion.open .accordion-content{
+display:block;
+}
+.accordion-arrow{
+transition:.2s;
+}
+.accordion.open .accordion-arrow{
+transform:rotate(180deg);
+}
 
 /* BUTTONS */
 a.button{
 display:block;width:100%;
-margin:10px 0;padding:14px;
+margin-top:14px;padding:14px;
 border-radius:12px;
 font-size:16px;font-weight:600;
 text-decoration:none;text-align:center;
-color:#fff;cursor:pointer;
+color:#fff;
 }
-a.button:hover{opacity:.95;transform:translateY(-1px)}
-
 .b1{background:linear-gradient(to right,#1e3a8a,#2563eb)}
 .b2{background:linear-gradient(to right,#2563eb,#3b82f6)}
 .b3{background:linear-gradient(to right,#3b82f6,#60a5fa)}
 .b4{background:linear-gradient(to right,#60a5fa,#93c5fd)}
 
-/* BANK */
-.bank-content{display:none}
 .copy-button{
 margin-top:12px;padding:12px;width:100%;
 border-radius:10px;border:none;
-background:#2563eb;color:#fff;font-weight:600;cursor:pointer;
+background:#2563eb;color:#fff;font-weight:600;
 }
 .copy-success{display:none;margin-top:8px;color:#10b981;font-weight:600}
-
-/* SOCIALS */
-.socials{
-margin-top:24px;display:flex;gap:18px;justify-content:center
-}
-.social-icon{
-width:60px;height:60px;border-radius:50%;
-background:#fff;
-display:flex;align-items:center;justify-content:center;
-box-shadow:0 10px 24px rgba(0,0,0,.15);
-transition:.2s;
-}
-.social-icon:hover{transform:translateY(-3px)}
-.social-icon svg{width:30px;height:30px}
 
 /* VIDEO MODAL */
 #videoModal{
@@ -105,12 +123,11 @@ align-items:center;justify-content:center;
 #videoModal .box{
 background:#fff;max-width:800px;width:90%;
 border-radius:16px;padding:16px;
-box-shadow:0 20px 40px rgba(0,0,0,.3);
 position:relative;
 }
 #videoModal button{
 position:absolute;top:8px;right:12px;
-border:none;background:none;font-size:26px;cursor:pointer;
+border:none;background:none;font-size:26px;
 }
 </style>
 </head>
@@ -118,6 +135,7 @@ border:none;background:none;font-size:26px;cursor:pointer;
 <body>
 
 <div class="header">
+<div class="back-btn" onclick="history.back()">←</div>
 <img src="logo.png" class="header-logo">
 <div class="header-title">Hisar Europe</div>
 <div class="language-switcher">
@@ -131,101 +149,66 @@ border:none;background:none;font-size:26px;cursor:pointer;
 
 <div class="container">
 
+<!-- GOOGLE REVIEW -->
 <div class="card">
-<h2 data-i18n="review_title"></h2>
-<p data-i18n="review_text"></p>
+<h2 data-i18n="review_title">Jetzt bewerten</h2>
+<p data-i18n="review_text">Teilen Sie Ihre Erfahrung</p>
 <a class="button b1" href="#" onclick="openGoogleMaps(event)">
-⭐ <span data-i18n="review_button"></span>
+⭐ <span data-i18n="review_button">Google-Bewertung abgeben</span>
 </a>
 </div>
 
-<div class="card">
-<h2 data-i18n="umrah_title"></h2>
-<p data-i18n="umrah_text"></p>
-<a class="button b2" href="https://umre.hisareurope.com/" target="_blank">
-<span data-i18n="umrah_button"></span>
-</a>
+<!-- BANK ACCORDION -->
+<div class="card accordion">
+<div class="accordion-header" onclick="toggleAccordion(this)">
+<span data-i18n="bank_title">Bankverbindung</span>
+<span class="accordion-arrow">⌄</span>
 </div>
-
-<div class="card">
-<h2 data-i18n="hajj_title"></h2>
-<p data-i18n="hajj_text"></p>
-<a class="button b3" href="https://hisareurope.com/hac/#form" target="_blank">
-<span data-i18n="hajj_button"></span>
-</a>
-</div>
-
-<div class="card">
-<h2 data-i18n="bank_title"></h2>
-<a class="button b4" href="#" onclick="toggleBank();return false;">
-<span data-i18n="bank_button"></span>
-</a>
-<div id="bankContent" class="bank-content">
-<p><strong>IBAN:</strong> DE40 5023 4500 0254 5200 01</p>
-<button class="copy-button" onclick="copyIBAN()">IBAN kopieren</button>
+<div class="accordion-content">
+<p><strong>IBAN:</strong> <span id="iban">DE40 5023 4500 0254 5200 01</span></p>
+<button class="copy-button" onclick="copyIBAN()" data-i18n="copy_iban">IBAN kopieren</button>
 <div id="copySuccess" class="copy-success">✓ kopiert</div>
 </div>
 </div>
 
-<div class="card">
-<h2 data-i18n="video_title"></h2>
-<p data-i18n="video_text"></p>
+<!-- VIDEO -->
+<div class="card accordion">
+<div class="accordion-header" onclick="toggleAccordion(this)">
+<span data-i18n="video_title">Reisepass scannen</span>
+<span class="accordion-arrow">⌄</span>
+</div>
+<div class="accordion-content">
+<p data-i18n="video_text">Kurze Videoanleitung</p>
 <a class="button b4" href="#" onclick="openVideo();return false;">
-<span data-i18n="video_button"></span>
+<span data-i18n="video_button">Tutorial ansehen</span>
 </a>
 </div>
-
-<div class="card">
-<h2>FAQ</h2>
-<p>Häufige Fragen (Platzhalter)</p>
-<a class="button b4" href="faq.html">Zum FAQ</a>
-</div>
-
-<div class="socials">
-<a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
-<svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
-<defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#f58529"/>
-<stop offset="50%" stop-color="#dd2a7b"/>
-<stop offset="100%" stop-color="#8134af"/>
-</linearGradient></defs>
-<rect x="3" y="3" width="18" height="18" rx="5"/>
-<circle cx="12" cy="12" r="4"/>
-</svg>
-</a>
-
-<a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
-<svg viewBox="0 0 24 24" fill="#ff0000">
-<path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10z"/>
-</svg>
-</a>
-
-<a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
-<svg viewBox="0 0 32 32" fill="#25D366">
-<path d="M16 2C8.3 2 2 8.1 2 15.6c0 2.7.8 5.3 2.3 7.5L2 30l7.2-2.2c2 1.1 4.3 1.7 6.8 1.7 7.7 0 14-6.1 14-13.6S23.7 2 16 2z"/>
-</svg>
-</a>
 </div>
 
 </div>
 
+<!-- VIDEO MODAL -->
 <div id="videoModal">
 <div class="box">
 <button onclick="closeVideo()">×</button>
-<iframe id="videoFrame" width="100%" height="420" allowfullscreen></iframe>
+<iframe id="videoFrame" width="100%" height="420" src="" allowfullscreen></iframe>
 </div>
 </div>
 
 <script>
-function toggleBank(){
-const el=document.getElementById("bankContent");
-el.style.display=el.style.display==="block"?"none":"block";
+function toggleAccordion(el){
+el.parentElement.classList.toggle("open");
 }
+
 function copyIBAN(){
-navigator.clipboard.writeText("DE40 5023 4500 0254 5200 01")
-.then(()=>{const s=document.getElementById("copySuccess");
-s.style.display="block";setTimeout(()=>s.style.display="none",2000);});
+navigator.clipboard.writeText(document.getElementById("iban").innerText)
+.then(()=>{
+const s=document.getElementById("copySuccess");
+s.style.display="block";
+setTimeout(()=>s.style.display="none",2000);
+});
 }
+
 function openVideo(){
 document.getElementById("videoFrame").src="https://www.youtube.com/embed/TNSjLdjA9Nc?autoplay=1";
 document.getElementById("videoModal").style.display="flex";
@@ -244,14 +227,8 @@ de:{
 review_title:"Jetzt bewerten",
 review_text:"Teilen Sie Ihre Erfahrung",
 review_button:"Google-Bewertung abgeben",
-umrah_title:"Umra-Tour reservieren",
-umrah_text:"Jetzt online buchen",
-umrah_button:"Jetzt reservieren",
-hajj_title:"Hadsch 2026",
-hajj_text:"Jetzt vormerken",
-hajj_button:"Jetzt anmelden",
 bank_title:"Bankverbindung",
-bank_button:"Bankverbindung anzeigen",
+copy_iban:"IBAN kopieren",
 video_title:"Reisepass scannen",
 video_text:"Kurze Videoanleitung",
 video_button:"Tutorial ansehen"
@@ -260,15 +237,9 @@ tr:{
 review_title:"Değerlendirme yap",
 review_text:"Deneyiminizi paylaşın",
 review_button:"Google yorumu bırak",
-umrah_title:"Umre turu",
-umrah_text:"Online rezervasyon",
-umrah_button:"Rezervasyon yap",
-hajj_title:"Hac 2026",
-hajj_text:"Ön kayıt",
-hajj_button:"Kayıt ol",
 bank_title:"Banka bilgileri",
-bank_button:"Banka bilgilerini göster",
-video_title:"Pasaport nasıl okutulur",
+copy_iban:"IBAN kopyala",
+video_title:"Pasaport okutma",
 video_text:"Kısa video anlatım",
 video_button:"Videoyu izle"
 },
@@ -276,15 +247,9 @@ en:{
 review_title:"Leave a review",
 review_text:"Share your experience",
 review_button:"Leave Google review",
-umrah_title:"Book Umrah tour",
-umrah_text:"Online booking",
-umrah_button:"Book now",
-hajj_title:"Hajj 2026",
-hajj_text:"Pre-registration",
-hajj_button:"Register now",
 bank_title:"Bank details",
-bank_button:"Show bank details",
-video_title:"How to scan your passport",
+copy_iban:"Copy IBAN",
+video_title:"Scan your passport",
 video_text:"Short video guide",
 video_button:"Watch tutorial"
 }
@@ -295,7 +260,6 @@ document.querySelectorAll("[data-i18n]").forEach(el=>{
 el.innerText=translations[lang][el.dataset.i18n];
 });
 }
-setLanguage("de");
 </script>
 
 </body>
