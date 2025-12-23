@@ -53,7 +53,7 @@ box-shadow:0 12px 32px rgba(0,0,0,.08);
 max-width:400px;width:100%;
 text-align:center;
 }
-.card h2{margin:0 0 8px;color:#1e3a8a}
+.card h2{margin:0 0 8px;color:#000}
 .card p{margin:0 0 16px;color:#4b5563}
 
 /* BUTTONS */
@@ -161,7 +161,7 @@ border:none;background:none;font-size:26px;cursor:pointer;
 <span data-i18n="bank_button">Bankverbindung anzeigen</span>
 </a>
 <div id="bankContent" class="bank-content">
-<p><strong>IBAN:</strong> <span id="iban">DE40 5023 4500 0254 5200 01</span></p>
+<p><strong>IBAN:</strong> DE40 5023 4500 0254 5200 01</p>
 <button class="copy-button" onclick="copyIBAN()">IBAN kopieren</button>
 <div id="copySuccess" class="copy-success">✓ kopiert</div>
 </div>
@@ -177,7 +177,7 @@ border:none;background:none;font-size:26px;cursor:pointer;
 
 <div class="card">
 <h2>FAQ</h2>
-<p>Häufige Fragen (bald verfügbar)</p>
+<p>Häufige Fragen (Platzhalter)</p>
 <a class="button b4" href="faq.html">Zum FAQ</a>
 </div>
 
@@ -195,26 +195,24 @@ border:none;background:none;font-size:26px;cursor:pointer;
 </a>
 
 <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
-<svg viewBox="0 0 24 24" fill="#ff0000">
+<svg viewBox="0 0 24 24" fill="#FF0000">
 <path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10z"/>
 </svg>
 </a>
 
 <a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
-<svg viewBox="0 0 24 24" fill="#25D366">
-<path d="M20 3.9A10 10 0 0 0 3.1 18.5L2 22l3.7-1A10 10 0 0 0 20 3.9z"/>
+<svg viewBox="0 0 32 32" fill="#25D366">
+<path d="M16 2C8.3 2 2 8.1 2 15.6c0 2.7.8 5.3 2.3 7.5L2 30l7.2-2.2c2 1.1 4.3 1.7 6.8 1.7 7.7 0 14-6.1 14-13.6S23.7 2 16 2z"/>
 </svg>
 </a>
 </div>
 
 </div>
 
-<!-- VIDEO MODAL -->
 <div id="videoModal">
 <div class="box">
 <button onclick="closeVideo()">×</button>
-<iframe id="videoFrame" width="100%" height="420"
-src="" allowfullscreen></iframe>
+<iframe id="videoFrame" width="100%" height="420" allowfullscreen></iframe>
 </div>
 </div>
 
@@ -224,7 +222,7 @@ const el=document.getElementById("bankContent");
 el.style.display=el.style.display==="block"?"none":"block";
 }
 function copyIBAN(){
-navigator.clipboard.writeText(document.getElementById("iban").innerText)
+navigator.clipboard.writeText("DE40 5023 4500 0254 5200 01")
 .then(()=>{const s=document.getElementById("copySuccess");
 s.style.display="block";setTimeout(()=>s.style.display="none",2000);});
 }
@@ -239,30 +237,6 @@ document.getElementById("videoModal").style.display="none";
 function openGoogleMaps(e){
 e.preventDefault();
 window.open("https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E","_blank");
-}
-
-const translations={
-de:{review_title:"Jetzt bewerten",review_text:"Teilen Sie Ihre Erfahrung",review_button:"Google-Bewertung abgeben",
-umrah_title:"Umra-Tour reservieren",umrah_text:"Jetzt online buchen",umrah_button:"Jetzt reservieren",
-hajj_title:"Hadsch 2026",hajj_text:"Jetzt vormerken",hajj_button:"Jetzt anmelden",
-bank_title:"Bankverbindung",bank_button:"Bankverbindung anzeigen",
-video_title:"Reisepass scannen",video_text:"Kurze Videoanleitung",video_button:"Tutorial ansehen"},
-tr:{review_title:"Değerlendirme yap",review_text:"Deneyiminizi paylaşın",review_button:"Google yorumu bırak",
-umrah_title:"Umre turu",umrah_text:"Online rezervasyon",umrah_button:"Rezervasyon yap",
-hajj_title:"Hac 2026",hajj_text:"Ön kayıt",hajj_button:"Kayıt ol",
-bank_title:"Banka bilgileri",bank_button:"Banka bilgilerini göster",
-video_title:"Pasaport nasıl okutulur",video_text:"Kısa video anlatım",video_button:"Videoyu izle"},
-en:{review_title:"Leave a review",review_text:"Share your experience",review_button:"Leave Google review",
-umrah_title:"Book Umrah tour",umrah_text:"Online booking",umrah_button:"Book now",
-hajj_title:"Hajj 2026",hajj_text:"Pre-registration",hajj_button:"Register now",
-bank_title:"Bank details",bank_button:"Show bank details",
-video_title:"How to scan your passport",video_text:"Short video guide",video_button:"Watch tutorial"}
-};
-
-function setLanguage(lang){
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-el.innerText=translations[lang][el.dataset.i18n];
-});
 }
 </script>
 
