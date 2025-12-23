@@ -1,146 +1,227 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hisar Europe</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hisar Europe</title>
 
-<style>
-body{
-  margin:0;
-  font-family:system-ui,Arial,sans-serif;
-  background:#f4f7fb;
-}
-.container{
-  max-width:420px;
-  margin:auto;
-  padding:20px;
-}
-.card{
-  background:#fff;
-  border-radius:16px;
-  padding:20px;
-  margin-bottom:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,.08);
-  text-align:center;
-}
-.card h2{margin:0 0 6px}
-.card p{margin:0 0 14px;color:#555}
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-36E0S5QW48"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-36E0S5QW48');
+  </script>
 
-.button{
-  display:block;
-  padding:14px;
-  border-radius:12px;
-  color:#fff;
-  text-decoration:none;
-  font-weight:600;
-}
-.blue{background:#2563eb}
-.green{background:#10b981}
-.gray{background:#6b7280}
+  <style>
+    * { box-sizing: border-box; }
 
-.bank-box{
-  display:none;
-  margin-top:10px;
-  font-size:14px;
-}
-.bank-box button{
-  margin-top:6px;
-}
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(to bottom, #e6edf7 0%, #f4f7fb 100%);
+      color: #1f2937;
+    }
 
-.socials{
-  display:flex;
-  justify-content:center;
-  gap:16px;
-  margin-top:20px;
-}
-.socials a svg{
-  width:42px;
-  height:42px;
-}
-</style>
+    .header {
+      position: sticky;
+      top: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffffcc;
+      backdrop-filter: blur(6px);
+      padding: 8px 16px;
+      border-bottom: 1px solid #ddd;
+      z-index: 1000;
+    }
+
+    .header-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid #ddd;
+    }
+
+    .header-title {
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .language-switcher {
+      margin-left: auto;
+    }
+
+    .language-switcher select {
+      padding: 6px 10px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-weight: 600;
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 16px 32px;
+      gap: 18px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 28px 22px;
+      border-radius: 16px;
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+      max-width: 400px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+    }
+
+    .card p {
+      margin: 0 0 16px;
+      color: #4b5563;
+    }
+
+    a.button,
+    .bank-button {
+      display: block;
+      width: 100%;
+      margin: 10px 0;
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      text-align: center;
+      color: #fff;
+    }
+
+    .bewertung { background: linear-gradient(to right, #2563eb, #3b82f6); }
+    .touren { background: linear-gradient(to right, #3b82f6, #60a5fa); }
+    .hadsch { background: linear-gradient(to right, #10b981, #34d399); }
+    .info { background: linear-gradient(to right, #64748b, #94a3b8); }
+
+    .bank-button {
+      background: #e6f0fa;
+      color: #1e3a8a;
+      border: none;
+    }
+
+    .bank-content { display: none; }
+
+    .socials {
+      margin-top: 10px;
+      display: flex;
+      gap: 18px;
+      justify-content: center;
+    }
+
+    .social-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #e6f0fa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: 0.2s ease;
+    }
+
+    .social-icon svg {
+      width: 30px;
+      height: 30px;
+    }
+  </style>
 </head>
 
 <body>
-<div class="container">
 
-<!-- GOOGLE REVIEW -->
-<div class="card">
-  <h2>Google Bewertung</h2>
-  <p>Teilen Sie Ihre Erfahrung mit uns</p>
-  <a class="button blue"
-     href="https://www.google.com/maps/place/?q=place_id:YOUR_PLACE_ID"
-     target="_blank">
-     ⭐ Jetzt bewerten
-  </a>
-</div>
-
-<!-- BANK -->
-<div class="card">
-  <h2>Bankverbindung</h2>
-  <p>Unsere Zahlungsinformationen</p>
-  <button class="button gray" onclick="toggleBank()">Bankdaten anzeigen</button>
-
-  <div class="bank-box" id="bankBox">
-    <div id="bankText">
-      IBAN: DE00 0000 0000 0000 0000 00<br>
-      BIC: ABCDDEFFXXX
-    </div>
-    <button onclick="copyBank()">Daten kopieren</button>
+<div class="header">
+  <img src="logo.png" class="header-logo">
+  <div class="header-title">Hisar Europe</div>
+  <div class="language-switcher">
+    <select onchange="setLanguage(this.value)">
+      <option value="de">🇩🇪 DE</option>
+      <option value="tr">🇹🇷 TR</option>
+      <option value="en">🇬🇧 EN</option>
+    </select>
   </div>
 </div>
 
-<!-- VIDEO -->
-<div class="card">
-  <h2>Video Tutorial</h2>
-  <p>So lesen Sie einen Pass korrekt aus</p>
-  <a class="button blue" href="tutorial.html">
-    ▶️ Video ansehen
-  </a>
-</div>
+<div class="container">
 
-<!-- FAQ -->
-<div class="card">
-  <h2>FAQ</h2>
-  <p>Häufig gestellte Fragen</p>
-  <a class="button green" href="faq.html">
-    ❓ Zu den Fragen
-  </a>
-</div>
+  <div class="card">
+    <h2 data-i18n="review_title">Jetzt bewerten</h2>
+    <p data-i18n="review_text">Teilen Sie Ihre Erfahrung</p>
+    <a href="#" class="button bewertung" onclick="openGoogleMaps(event)">
+      ⭐ <span data-i18n="review_button">Google-Bewertung abgeben</span>
+    </a>
+  </div>
 
-<!-- SOCIALS -->
-<div class="socials">
-  <a href="https://www.instagram.com/hisar_europe/" target="_blank">
-    <svg viewBox="0 0 24 24" fill="#E1306C">
-      <path d="M7 2h10a5 5 0 015 5v10a5 5 0 01-5 5H7a5 5 0 01-5-5V7a5 5 0 015-5z"/>
-    </svg>
-  </a>
+  <div class="card">
+    <h2 data-i18n="pdf_title">Umra Handbuch</h2>
+    <p data-i18n="pdf_text">PDF herunterladen</p>
+    <a href="umra-handbuch.pdf" target="_blank" class="button info">📄 PDF öffnen</a>
+  </div>
 
-  <a href="https://www.youtube.com/@HisarEurope" target="_blank">
-    <svg viewBox="0 0 24 24" fill="#FF0000">
-      <path d="M23.5 6.2s-.2-1.6-.8-2.3c-.8-.8-1.7-.8-2.1-.9C16.6 2.5 12 2.5 12 2.5h0s-4.6 0-8.6.5c-.4 0-1.3.1-2.1.9C.7 4.6.5 6.2.5 6.2S0 8.1 0 10v1.9c0 1.9.5 3.8.5 3.8s.2 1.6.8 2.3c.8.8 1.9.8 2.4.9 1.7.2 7.3.5 7.3.5s4.6 0 8.6-.5c.4 0 1.3-.1 2.1-.9.6-.7.8-2.3.8-2.3s.5-1.9.5-3.8V10c0-1.9-.5-3.8-.5-3.8z"/>
-    </svg>
-  </a>
+  <div class="card">
+    <h2 data-i18n="tutorial_title">Reisepass Tutorial</h2>
+    <p data-i18n="tutorial_text">Videoanleitung ansehen</p>
+    <a href="tutorial.html" class="button info">▶ Tutorial öffnen</a>
+  </div>
 
-  <a href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
-    <svg viewBox="0 0 24 24" fill="#25D366">
-      <path d="M20.5 3.5A11 11 0 003.4 17.6L2 22l4.6-1.3A11 11 0 1020.5 3.5z"/>
-    </svg>
-  </a>
-</div>
+  <div class="card">
+    <h2>FAQ</h2>
+    <p>Häufige Fragen</p>
+    <a href="faq.html" class="button info">❓ FAQ öffnen</a>
+  </div>
+
+  <div class="socials">
+    <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="#dd2a7b">
+        <rect x="3" y="3" width="18" height="18" rx="5"/>
+        <circle cx="12" cy="12" r="4"/>
+      </svg>
+    </a>
+
+    <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
+      <svg viewBox="0 0 24 24" fill="#ff0000">
+        <path d="M9 7l8 5-8 5z"/>
+      </svg>
+    </a>
+
+    <a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
+      <svg viewBox="0 0 24 24" fill="#25D366">
+        <path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.3A10 10 0 1 0 12 2z"/>
+      </svg>
+    </a>
+  </div>
 
 </div>
 
 <script>
-function toggleBank(){
-  const box=document.getElementById("bankBox");
-  box.style.display = box.style.display==="block"?"none":"block";
+function openGoogleMaps(e){
+  e.preventDefault();
+  window.open("https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E","_blank");
 }
-function copyBank(){
-  navigator.clipboard.writeText(
-    document.getElementById("bankText").innerText
-  );
-  alert("Bankdaten kopiert");
+
+const translations = {
+  de:{review_title:"Jetzt bewerten",review_text:"Teilen Sie Ihre Erfahrung",review_button:"Google-Bewertung abgeben",pdf_title:"Umra Handbuch",pdf_text:"PDF herunterladen",tutorial_title:"Reisepass Tutorial",tutorial_text:"Videoanleitung ansehen"},
+  tr:{review_title:"Değerlendirme yap",review_text:"Deneyiminizi paylaşın",review_button:"Google yorumu bırak",pdf_title:"Umre kitapçığı",pdf_text:"PDF indir",tutorial_title:"Pasaport nasıl okutulur",tutorial_text:"Video izle"},
+  en:{review_title:"Leave a review",review_text:"Share your experience",review_button:"Leave Google review",pdf_title:"Umrah Guide",pdf_text:"Download PDF",tutorial_title:"Passport tutorial",tutorial_text:"Watch video"}
+};
+
+function setLanguage(lang){
+  document.querySelectorAll("[data-i18n]").forEach(el=>{
+    el.innerText = translations[lang][el.dataset.i18n];
+  });
 }
 </script>
 
