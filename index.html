@@ -97,7 +97,7 @@ margin-top:24px;display:flex;gap:18px;justify-content:center
   transition:.2s;
 }
 .social-icon:hover{transform:translateY(-3px);}
-.social-icon svg{width:30px;height:30px;}
+.social-icon svg{width:30px;height:30px}
 
 /* VIDEO MODAL */
 #videoModal{
@@ -192,7 +192,12 @@ cursor:pointer;
 <div class="card">
 <h2 data-i18n="faq_title"></h2>
 <p data-i18n="faq_text"></p>
-<a class="button b4" href="#" onclick="showFAQ();return false;" data-i18n="faq_button">Zum FAQ</a>
+<a class="button b4" href="#" onclick="showFAQ();return false;" data-i18n="faq_button"></a>
+</div>
+
+<!-- NEUER TEXT ZWISCHEN FAQ UND SOCIALS -->
+<div class="card" style="background:#f9f9f9;">
+<p style="margin:0;" data-i18n="social_prompt"></p>
 </div>
 
 <div class="socials">
@@ -227,16 +232,16 @@ cursor:pointer;
 <!-- FAQ SECTION -->
 <div class="container" id="faqView" style="display:none;background:linear-gradient(to bottom,#e6edf7 0%,#f4f7fb 100%)">
 <div class="card">
-<h2 data-i18n="faq_title">FAQ</h2>
+<h2 data-i18n="faq_title"></h2>
 
 <div class="faq-item" onclick="toggleFaq(this)">
-<strong data-i18n="faq_q1">Wie melde ich mich an?</strong>
-<p data-i18n="faq_a1">Über die Anmeldeformulare auf der Startseite.</p>
+<strong data-i18n="faq_q1"></strong>
+<p data-i18n="faq_a1"></p>
 </div>
 
 <div class="faq-item" onclick="toggleFaq(this)">
-<strong data-i18n="faq_q2">Wann beginnt die Reise?</strong>
-<p data-i18n="faq_a2">Die Termine werden nach Anmeldung bekanntgegeben.</p>
+<strong data-i18n="faq_q2"></strong>
+<p data-i18n="faq_a2"></p>
 </div>
 
 </div>
@@ -307,66 +312,4 @@ video_button:"Tutorial ansehen",
 faq_title:"FAQ",
 faq_text:"Häufige Fragen (Platzhalter)",
 faq_button:"Zum FAQ",
-faq_q1:"Wie melde ich mich an?",
-faq_a1:"Über die Anmeldeformulare auf der Startseite.",
-faq_q2:"Wann beginnt die Reise?",
-faq_a2:"Die Termine werden nach Anmeldung bekanntgegeben."
-},
-tr:{
-review_title:"Değerlendirme yap",
-review_text:"Deneyiminizi paylaşın",
-review_button:"Google yorumu bırak",
-umrah_title:"Umre turu",
-umrah_text:"Online rezervasyon",
-umrah_button:"Rezervasyon yap",
-hajj_title:"Hac 2026",
-hajj_text:"Ön kayıt",
-hajj_button:"Kayıt ol",
-bank_title:"Banka bilgileri",
-bank_button:"Banka bilgilerini göster",
-video_title:"Pasaport nasıl okutulur",
-video_text:"Kısa video anlatım",
-video_button:"Videoyu izle",
-faq_title:"SSS",
-faq_text:"Sık Sorulan Sorular (Yer tutucu)",
-faq_button:"SSS'ye git",
-faq_q1:"Nasıl kayıt olabilirim?",
-faq_a1:"Anasayfadaki başvuru formları üzerinden.",
-faq_q2:"Seyahat ne zaman başlıyor?",
-faq_a2:"Tarihleri kayıt sonrası duyurulacaktır."
-},
-en:{
-review_title:"Leave a review",
-review_text:"Share your experience",
-review_button:"Leave Google review",
-umrah_title:"Book Umrah tour",
-umrah_text:"Online booking",
-umrah_button:"Book now",
-hajj_title:"Hajj 2026",
-hajj_text:"Pre-registration",
-hajj_button:"Register now",
-bank_title:"Bank details",
-bank_button:"Show bank details",
-video_title:"How to scan your passport",
-video_text:"Short video guide",
-video_button:"Watch tutorial",
-faq_title:"FAQ",
-faq_text:"Frequently Asked Questions (Placeholder)",
-faq_button:"Go to FAQ",
-faq_q1:"How do I register?",
-faq_a1:"Via the registration forms on the homepage.",
-faq_q2:"When does the trip start?",
-faq_a2:"Dates will be announced after registration."
-}
-};
-
-function setLanguage(lang){
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-el.innerText=translations[lang][el.dataset.i18n];
-});
-}
-setLanguage("de");
-</script>
-
-</body>
-</html>
+faq
