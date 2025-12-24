@@ -27,15 +27,29 @@ body{
 /* HEADER */
 .header{
   position:sticky;top:0;
-  display:flex;align-items:center;gap:12px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
   background:#ffffffcc;
   backdrop-filter:blur(10px);
   padding:12px 20px;
   border-bottom:1px solid #ddd;
   z-index:1000;
 }
+.back-arrow {
+  font-size: 28px;
+  text-decoration: none;
+  color: #007aff;
+  margin-right: 12px;
+}
+.header-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
 .header-logo{width:48px;height:48px;border-radius:50%;border:1px solid #ddd}
-.header-title{font-weight:600;font-size:20px}
+.header-title{font-weight:600;font-size:20px;margin-top:4px;}
 .language-switcher{margin-left:auto}
 .language-switcher select{
   padding:8px 12px;border-radius:12px;border:1px solid #ddd;font-weight:600;
@@ -109,19 +123,17 @@ a.button:hover{
 
 /* VIDEO MODAL */
 #videoModal {
-  display: none; /* Modal zunächst unsichtbar */
+  display: none;
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.75); /* abgedunkelter Hintergrund */
+  background: rgba(0,0,0,0.75);
   z-index: 2000;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 20px;
 }
-
-#videoModal.active { display: flex; } /* erst beim Klick aktivieren */
-
+#videoModal.active { display: flex; }
 #videoModal .box {
   max-width: 90%;
   width: 800px;
@@ -129,7 +141,6 @@ a.button:hover{
   overflow: hidden;
   box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
-
 #videoModal iframe {
   width: 100%;
   height: 450px;
@@ -138,8 +149,6 @@ a.button:hover{
   border-radius: 12px;
   background: #000;
 }
-
-/* Schließen-Button unterhalb des Videos */
 #videoModal .close-button {
   margin-top: 16px;
   width: 60px;
@@ -157,13 +166,25 @@ a.button:hover{
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: all 0.25s ease;
 }
-
 #videoModal .close-button:hover {
   background: rgba(0,0,0,1);
   transform: scale(1.1);
 }
 
 /* FAQ */
+#faqView .container{
+  display:flex;
+  flex-direction:column;
+  align-items:center; /* zentriert die Box */
+  justify-content:flex-start;
+  padding:60px 16px 40px;
+  gap:24px;
+}
+#faqView .card{
+  max-width:450px;
+  width:100%;
+  text-align:left; /* Text linksbündig */
+}
 .faq-item{
   text-align:left;
   border-top:1px solid #e5e5ea;
@@ -179,15 +200,18 @@ a.button:hover{
 <body>
 
 <div class="header">
-<img src="logo.png" class="header-logo">
-<div class="header-title">Hisar Europe</div>
-<div class="language-switcher">
-<select onchange="setLanguage(this.value)">
-<option value="de">🇩🇪 DE</option>
-<option value="tr">🇹🇷 TR</option>
-<option value="en">🇬🇧 EN</option>
-</select>
-</div>
+  <a href="#" onclick="backToHome()" class="back-arrow">←</a>
+  <div class="header-center">
+    <img src="logo.png" class="header-logo">
+    <div class="header-title">Hisar Europe</div>
+  </div>
+  <div class="language-switcher">
+    <select onchange="setLanguage(this.value)">
+      <option value="de">🇩🇪 DE</option>
+      <option value="tr">🇹🇷 TR</option>
+      <option value="en">🇬🇧 EN</option>
+    </select>
+  </div>
 </div>
 
 <div class="container" id="homeView">
@@ -303,23 +327,27 @@ a.button:hover{
 <script>
 /* NAVIGATION */
 function showFAQ(){
-homeView.style.display="none";
-faqView.style.display="block";
+  homeView.style.display="none";
+  faqView.style.display="block";
+}
+function backToHome(){
+  faqView.style.display="none";
+  homeView.style.display="block";
 }
 function toggleFaq(el){
-const p=el.querySelector("p");
-p.style.display=p.style.display==="block"?"none":"block";
+  const p=el.querySelector("p");
+  p.style.display=p.style.display==="block"?"none":"block";
 }
 
 /* BANK */
 function toggleBank(){
-const el=document.getElementById("bankContent");
-el.style.display=el.style.display==="block"?"none":"block";
+  const el=document.getElementById("bankContent");
+  el.style.display=el.style.display==="block"?"none":"block";
 }
 function copyIBAN(){
-navigator.clipboard.writeText("DE40 5023 4500 0254 5200 01")
-.then(()=>{const s=document.getElementById("copySuccess");
-s.style.display="block";setTimeout(()=>s.style.display="none",2000);});
+  navigator.clipboard.writeText("DE40 5023 4500 0254 5200 01")
+  .then(()=>{const s=document.getElementById("copySuccess");
+  s.style.display="block";setTimeout(()=>s.style.display="none",2000);});
 }
 
 /* VIDEO */
@@ -327,35 +355,23 @@ function openVideo() {
     const modal = document.getElementById("videoModal");
     const frame = document.getElementById("videoFrame");
     frame.src = "https://www.youtube.com/embed/TNSjLdjA9Nc";
-    modal.classList.add("active"); // Modal erst hier sichtbar
+    modal.classList.add("active");
 }
-
 function closeVideo() {
     const modal = document.getElementById("videoModal");
     const frame = document.getElementById("videoFrame");
     frame.src = "";
-    modal.classList.remove("active"); // Modal wieder verstecken
+    modal.classList.remove("active");
 }
 
 /* MAPS */
 function openGoogleMaps(e){
-e.preventDefault();
-window.open("https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E","_blank");
+  e.preventDefault();
+  window.open("https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E","_blank");
 }
 
 /* TRANSLATIONS */
 const translations={
 de:{review_title:"Jetzt bewerten",review_text:"Teilen Sie Ihre Erfahrung",review_button:"Google-Bewertung abgeben",umrah_title:"Umra-Tour reservieren",umrah_text:"Jetzt online buchen",umrah_button:"Jetzt reservieren",hajj_title:"Hadsch 2026",hajj_text:"Jetzt vormerken",hajj_button:"Jetzt anmelden",bank_title:"Bankverbindung",bank_button:"Bankverbindung anzeigen",video_title:"Reisepass scannen",video_text:"Kurze Videoanleitung",video_button:"Tutorial ansehen",faq_title:"FAQ",faq_text:"Häufige Fragen (Platzhalter)",faq_button:"Zum FAQ",faq_q1:"Wie melde ich mich an?",faq_a1:"Über die Anmeldeformulare auf der Startseite.",faq_q2:"Wann beginnt die Reise?",faq_a2:"Die Termine werden nach Anmeldung bekanntgegeben.",social_prompt:"Besuchen Sie uns auch auf unseren Kanälen"},
 tr:{review_title:"Değerlendirme yap",review_text:"Deneyiminizi paylaşın",review_button:"Google yorumu bırak",umrah_title:"Umre turu",umrah_text:"Online rezervasyon",umrah_button:"Rezervasyon yap",hajj_title:"Hac 2026",hajj_text:"Ön kayıt",hajj_button:"Kayıt ol",bank_title:"Banka bilgileri",bank_button:"Banka bilgilerini göster",video_title:"Pasaport nasıl okutulur",video_text:"Kısa video anlatım",video_button:"Videoyu izle",faq_title:"SSS",faq_text:"Sıkça Sorulan Sorular (Yer tutucu)",faq_button:"SSS'ye git",faq_q1:"Nasıl kayıt olabilirim?",faq_a1:"Ana sayfadaki kayıt formlarını kullanarak.",faq_q2:"Seyahat ne zaman başlıyor?",faq_a2:"Tarihleri kayıt sonrası öğrenebilirsiniz.",social_prompt:"Kanallarımızda da bizi ziyaret edin"},
-en:{review_title:"Leave a review",review_text:"Share your experience",review_button:"Leave Google review",umrah_title:"Book Umrah tour",umrah_text:"Online booking",umrah_button:"Book now",hajj_title:"Hajj 2026",hajj_text:"Pre-registration",hajj_button:"Register now",bank_title:"Bank details",bank_button:"Show bank details",video_title:"How to scan your passport",video_text:"Short video guide",video_button:"Watch tutorial",faq_title:"FAQ",faq_text:"Frequently Asked Questions (placeholder)",faq_button:"Go to FAQ",faq_q1:"How do I register?",faq_a1:"Via the registration forms on the homepage.",faq_q2:"When does the trip start?",faq_a2:"Dates are announced after registration.",social_prompt:"Visit us also on our channels"}};
-
-function setLanguage(lang){
-document.querySelectorAll("[data-i18n]").forEach(el=>{
-el.innerText=translations[lang][el.dataset.i18n];
-});
-}
-setLanguage("de");
-</script>
-
-</body>
-</html>
+en:{review_title:"Leave a review",review_text:"Share your experience",review_button:"Leave Google review",umrah_title:"Book Umrah tour",umrah_text:"Online booking",umrah_button:"Book now",hajj_title:"Hajj 2026",hajj_text:"Pre-registration",hajj_button:"Register now",bank
