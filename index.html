@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hisar Europe</title>
+<meta name="description" content="Hisar Europe - Umrah & Hajj Reisen, Bewertungen, Bankverbindung, Videoanleitungen, FAQs und Social Media Links.">
 
 <!-- Google Analytics 4 -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-36E0S5QW48"></script>
@@ -64,6 +65,7 @@ border-radius:12px;
 font-size:16px;font-weight:600;
 text-decoration:none;text-align:center;
 color:#fff;cursor:pointer;
+transition:.2s;
 }
 a.button:hover{opacity:.95;transform:translateY(-1px)}
 
@@ -131,19 +133,19 @@ cursor:pointer;
 
 <body>
 
-<div class="header">
-<img src="logo.png" class="header-logo">
+<header class="header">
+<img src="logo.png" alt="Hisar Europe Logo" class="header-logo">
 <div class="header-title">Hisar Europe</div>
 <div class="language-switcher">
-<select onchange="setLanguage(this.value)">
+<select onchange="setLanguage(this.value)" aria-label="Sprache auswählen">
 <option value="de">🇩🇪 DE</option>
 <option value="tr">🇹🇷 TR</option>
 <option value="en">🇬🇧 EN</option>
 </select>
 </div>
-</div>
+</header>
 
-<div class="container" id="homeView">
+<main class="container" id="homeView">
 
 <div class="card">
 <h2 data-i18n="review_title"></h2>
@@ -156,7 +158,7 @@ cursor:pointer;
 <div class="card">
 <h2 data-i18n="umrah_title"></h2>
 <p data-i18n="umrah_text"></p>
-<a class="button b2" href="https://umre.hisareurope.com/" target="_blank">
+<a class="button b2" href="https://umre.hisareurope.com/" target="_blank" rel="noopener noreferrer">
 <span data-i18n="umrah_button"></span>
 </a>
 </div>
@@ -164,7 +166,7 @@ cursor:pointer;
 <div class="card">
 <h2 data-i18n="hajj_title"></h2>
 <p data-i18n="hajj_text"></p>
-<a class="button b3" href="https://hisareurope.com/hac/#form" target="_blank">
+<a class="button b3" href="https://hisareurope.com/hac/#form" target="_blank" rel="noopener noreferrer">
 <span data-i18n="hajj_button"></span>
 </a>
 </div>
@@ -175,9 +177,9 @@ cursor:pointer;
 <span data-i18n="bank_button"></span>
 </a>
 <div id="bankContent" class="bank-content">
-<img src="bankverbindung.jpeg" style="width:100%;border-radius:12px">
-<button class="copy-button" onclick="copyIBAN()">IBAN kopieren</button>
-<div id="copySuccess" class="copy-success">✓ kopiert</div>
+<img src="bankverbindung.jpeg" alt="Bankverbindung" style="width:100%;border-radius:12px">
+<button class="copy-button" onclick="copyIBAN()" aria-label="IBAN kopieren">IBAN kopieren</button>
+<div id="copySuccess" class="copy-success" role="status" aria-live="polite">✓ kopiert</div>
 </div>
 </div>
 
@@ -195,13 +197,12 @@ cursor:pointer;
 <a class="button b4" href="#" onclick="showFAQ();return false;" data-i18n="faq_button"></a>
 </div>
 
-<!-- NEUER TEXT ZWISCHEN FAQ UND SOCIALS -->
 <div class="card" style="background:#f9f9f9;">
 <p style="margin:0;" data-i18n="social_prompt"></p>
 </div>
 
 <div class="socials">
-<a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
+<a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
 <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
 <defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
 <stop offset="0%" stop-color="#f58529"/>
@@ -212,13 +213,13 @@ cursor:pointer;
 <circle cx="12" cy="12" r="4"/>
 </svg>
 </a>
-<a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
+<a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
   <rect x="2" y="4" width="20" height="16" rx="4" fill="#FF0000"/>
   <polygon points="10,8 16,12 10,16" fill="#FFFFFF"/>
 </svg>
 </a>
-<a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
+<a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
 <svg viewBox="0 0 32 32">
 <path fill="#25D366" d="M16 3C9.4 3 4 8.1 4 14.5c0 2.3.7 4.6 2 6.5L4 29l8.3-2.2c1.1.3 2.3.5 3.7.5 6.6 0 12-5.1 12-11.5S22.6 3 16 3z"/>
 <path fill="#fff" d="M21.4 18.6c-.3-.2-1.9-.9-2.2-1-.3-.1-.6-.2-.9.2-.3.4-1 1-1.2 1.2-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.6.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.4 4 1.6 4.3c.2.3 2.8 4.3 6.8 6 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.6-.5z"/>
@@ -226,11 +227,9 @@ cursor:pointer;
 </a>
 </div>
   
-</div>
-</section>
+</main>
 
-<!-- FAQ SECTION -->
-<div class="container" id="faqView" style="display:none;background:linear-gradient(to bottom,#e6edf7 0%,#f4f7fb 100%)">
+<section class="container" id="faqView" style="display:none;background:linear-gradient(to bottom,#e6edf7 0%,#f4f7fb 100%)">
 <div class="card">
 <h2 data-i18n="faq_title"></h2>
 
@@ -244,13 +243,15 @@ cursor:pointer;
 <p data-i18n="faq_a2"></p>
 </div>
 
+<a class="button b4" href="#" onclick="backToHome();return false;">← Zurück</a>
+
 </div>
-</div>
+</section>
 
 <div id="videoModal">
 <div class="box">
-<button onclick="closeVideo()">×</button>
-<iframe id="videoFrame" width="100%" height="420" allowfullscreen></iframe>
+<button onclick="closeVideo()" aria-label="Video schließen">×</button>
+<iframe id="videoFrame" width="100%" height="420" allowfullscreen title="Tutorial Video"></iframe>
 </div>
 </div>
 
@@ -259,6 +260,10 @@ cursor:pointer;
 function showFAQ(){
 homeView.style.display="none";
 faqView.style.display="block";
+}
+function backToHome(){
+faqView.style.display="none";
+homeView.style.display="flex";
 }
 function toggleFaq(el){
 const p=el.querySelector("p");
@@ -285,6 +290,10 @@ function closeVideo(){
 document.getElementById("videoFrame").src="";
 document.getElementById("videoModal").style.display="none";
 }
+/* ESC schließt Video */
+document.addEventListener('keydown', function(e){
+if(e.key==="Escape") closeVideo();
+});
 
 /* MAPS */
 function openGoogleMaps(e){
