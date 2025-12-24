@@ -89,7 +89,7 @@ margin-top:24px;display:flex;gap:18px;justify-content:center
   width:60px;
   height:60px;
   border-radius:50%;
-  background:#fff; /* oder transparent, falls du nur das Logo willst */
+  background:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -190,9 +190,9 @@ cursor:pointer;
 </div>
 
 <div class="card">
-<h2>FAQ</h2>
-<p>Häufige Fragen (Platzhalter)</p>
-<a class="button b4" href="#" onclick="showFAQ();return false;">Zum FAQ</a>
+<h2 data-i18n="faq_title"></h2>
+<p data-i18n="faq_text"></p>
+<a class="button b4" href="#" onclick="showFAQ();return false;" data-i18n="faq_button">Zum FAQ</a>
 </div>
 
 <div class="socials">
@@ -209,9 +209,7 @@ cursor:pointer;
 </a>
 <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <!-- Rotes abgerundetes Rechteck -->
   <rect x="2" y="4" width="20" height="16" rx="4" fill="#FF0000"/>
-  <!-- Weißes Play-Dreieck -->
   <polygon points="10,8 16,12 10,16" fill="#FFFFFF"/>
 </svg>
 </a>
@@ -229,16 +227,16 @@ cursor:pointer;
 <!-- FAQ SECTION -->
 <div class="container" id="faqView" style="display:none;background:linear-gradient(to bottom,#e6edf7 0%,#f4f7fb 100%)">
 <div class="card">
-<h2>FAQ</h2>
+<h2 data-i18n="faq_title">FAQ</h2>
 
 <div class="faq-item" onclick="toggleFaq(this)">
-<strong>Wie melde ich mich an?</strong>
-<p>Über die Anmeldeformulare auf der Startseite.</p>
+<strong data-i18n="faq_q1">Wie melde ich mich an?</strong>
+<p data-i18n="faq_a1">Über die Anmeldeformulare auf der Startseite.</p>
 </div>
 
 <div class="faq-item" onclick="toggleFaq(this)">
-<strong>Wann beginnt die Reise?</strong>
-<p>Die Termine werden nach Anmeldung bekanntgegeben.</p>
+<strong data-i18n="faq_q2">Wann beginnt die Reise?</strong>
+<p data-i18n="faq_a2">Die Termine werden nach Anmeldung bekanntgegeben.</p>
 </div>
 
 </div>
@@ -305,7 +303,14 @@ bank_title:"Bankverbindung",
 bank_button:"Bankverbindung anzeigen",
 video_title:"Reisepass scannen",
 video_text:"Kurze Videoanleitung",
-video_button:"Tutorial ansehen"
+video_button:"Tutorial ansehen",
+faq_title:"FAQ",
+faq_text:"Häufige Fragen (Platzhalter)",
+faq_button:"Zum FAQ",
+faq_q1:"Wie melde ich mich an?",
+faq_a1:"Über die Anmeldeformulare auf der Startseite.",
+faq_q2:"Wann beginnt die Reise?",
+faq_a2:"Die Termine werden nach Anmeldung bekanntgegeben."
 },
 tr:{
 review_title:"Değerlendirme yap",
@@ -321,7 +326,14 @@ bank_title:"Banka bilgileri",
 bank_button:"Banka bilgilerini göster",
 video_title:"Pasaport nasıl okutulur",
 video_text:"Kısa video anlatım",
-video_button:"Videoyu izle"
+video_button:"Videoyu izle",
+faq_title:"SSS",
+faq_text:"Sık Sorulan Sorular (Yer tutucu)",
+faq_button:"SSS'ye git",
+faq_q1:"Nasıl kayıt olabilirim?",
+faq_a1:"Anasayfadaki başvuru formları üzerinden.",
+faq_q2:"Seyahat ne zaman başlıyor?",
+faq_a2:"Tarihleri kayıt sonrası duyurulacaktır."
 },
 en:{
 review_title:"Leave a review",
@@ -337,7 +349,14 @@ bank_title:"Bank details",
 bank_button:"Show bank details",
 video_title:"How to scan your passport",
 video_text:"Short video guide",
-video_button:"Watch tutorial"
+video_button:"Watch tutorial",
+faq_title:"FAQ",
+faq_text:"Frequently Asked Questions (Placeholder)",
+faq_button:"Go to FAQ",
+faq_q1:"How do I register?",
+faq_a1:"Via the registration forms on the homepage.",
+faq_q2:"When does the trip start?",
+faq_a2:"Dates will be announced after registration."
 }
 };
 
@@ -351,9 +370,3 @@ setLanguage("de");
 
 </body>
 </html>
-
-
-
-
-
-
