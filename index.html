@@ -312,4 +312,69 @@ video_button:"Tutorial ansehen",
 faq_title:"FAQ",
 faq_text:"Häufige Fragen (Platzhalter)",
 faq_button:"Zum FAQ",
-faq
+faq_q1:"Wie melde ich mich an?",
+faq_a1:"Über die Anmeldeformulare auf der Startseite.",
+faq_q2:"Wann beginnt die Reise?",
+faq_a2:"Die Termine werden nach Anmeldung bekanntgegeben.",
+social_prompt:"Besuchen Sie uns auch auf unseren Kanälen"
+},
+tr:{
+review_title:"Değerlendirme yap",
+review_text:"Deneyiminizi paylaşın",
+review_button:"Google yorumu bırak",
+umrah_title:"Umre turu",
+umrah_text:"Online rezervasyon",
+umrah_button:"Rezervasyon yap",
+hajj_title:"Hac 2026",
+hajj_text:"Ön kayıt",
+hajj_button:"Kayıt ol",
+bank_title:"Banka bilgileri",
+bank_button:"Banka bilgilerini göster",
+video_title:"Pasaport nasıl okutulur",
+video_text:"Kısa video anlatım",
+video_button:"Videoyu izle",
+faq_title:"SSS",
+faq_text:"Sıkça Sorulan Sorular (Yer tutucu)",
+faq_button:"SSS'ye git",
+faq_q1:"Nasıl kayıt olabilirim?",
+faq_a1:"Ana sayfadaki kayıt formlarını kullanarak.",
+faq_q2:"Seyahat ne zaman başlıyor?",
+faq_a2:"Tarihleri kayıt sonrası öğrenebilirsiniz.",
+social_prompt:"Kanallarımızda da bizi ziyaret edin"
+},
+en:{
+review_title:"Leave a review",
+review_text:"Share your experience",
+review_button:"Leave Google review",
+umrah_title:"Book Umrah tour",
+umrah_text:"Online booking",
+umrah_button:"Book now",
+hajj_title:"Hajj 2026",
+hajj_text:"Pre-registration",
+hajj_button:"Register now",
+bank_title:"Bank details",
+bank_button:"Show bank details",
+video_title:"How to scan your passport",
+video_text:"Short video guide",
+video_button:"Watch tutorial",
+faq_title:"FAQ",
+faq_text:"Frequently Asked Questions (placeholder)",
+faq_button:"Go to FAQ",
+faq_q1:"How do I register?",
+faq_a1:"Via the registration forms on the homepage.",
+faq_q2:"When does the trip start?",
+faq_a2:"Dates are announced after registration.",
+social_prompt:"Visit us also on our channels"
+}
+};
+
+function setLanguage(lang){
+document.querySelectorAll("[data-i18n]").forEach(el=>{
+el.innerText=translations[lang][el.dataset.i18n];
+});
+}
+setLanguage("de");
+</script>
+
+</body>
+</html>
