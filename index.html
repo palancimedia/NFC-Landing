@@ -92,7 +92,7 @@ a.button:hover{
 
 /* SOCIALS */
 .socials{
-  margin-top:28px;display:flex;gap:20px;justify-content:center
+  margin-top:16px;display:flex;gap:20px;justify-content:center;
 }
 .social-icon{
   width:60px;height:60px;border-radius:50%;
@@ -203,59 +203,41 @@ a.button:hover{
 <a class="button" href="#" onclick="showFAQ();return false;" data-i18n="faq_button"></a>
 </div>
 
+<!-- NEUE SOCIAL-KARTE: TEXT + ICONS ZUSAMMEN -->
 <div class="card" style="background:#f9f9f9;">
   <p style="margin-bottom:16px;" data-i18n="social_prompt"></p>
   <div class="socials">
     <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
-      <svg viewBox="0 0 24 24">
+      <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
+        <defs>
+          <linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#f58529"/>
+            <stop offset="50%" stop-color="#dd2a7b"/>
+            <stop offset="100%" stop-color="#8134af"/>
+          </linearGradient>
+        </defs>
         <rect x="3" y="3" width="18" height="18" rx="5"/>
         <circle cx="12" cy="12" r="4"/>
       </svg>
     </a>
     <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
-      <svg viewBox="0 0 24 24">
-        <rect x="2" y="4" width="20" height="16" rx="4"/>
-        <polygon points="10,8 16,12 10,16"/>
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <rect x="2" y="4" width="20" height="16" rx="4" fill="#FF0000"/>
+        <polygon points="10,8 16,12 10,16" fill="#FFFFFF"/>
       </svg>
     </a>
     <a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
       <svg viewBox="0 0 32 32">
-        <path fill="#fff" d="M16 3C9.4 3 4 8.1 4 14.5c0 2.3.7 4.6 2 6.5L4 29l8.3-2.2c1.1.3 2.3.5 3.7.5 6.6 0 12-5.1 12-11.5S22.6 3 16 3z"/>
-        <path fill="#34c759" d="M21.4 18.6c-.3-.2-1.9-.9-2.2-1-.3-.1-.6-.2-.9.2-.3.4-1 1-1.2 1.2-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.6.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.4 4 1.6 4.3c.2.3 2.8 4.3 6.8 6 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.6-.5z"/>
+        <path fill="#25D366" d="M16 3C9.4 3 4 8.1 4 14.5c0 2.3.7 4.6 2 6.5L4 29l8.3-2.2c1.1.3 2.3.5 3.7.5 6.6 0 12-5.1 12-11.5S22.6 3 16 3z"/>
+        <path fill="#fff" d="M21.4 18.6c-.3-.2-1.9-.9-2.2-1-.3-.1-.6-.2-.9.2-.3.4-1 1-1.2 1.2-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.6.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.4 4 1.6 4.3c.2.3 2.8 4.3 6.8 6 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.6-.5z"/>
       </svg>
     </a>
   </div>
 </div>
 
+</div> <!-- END homeView -->
 
-<div class="socials">
-<a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
-<svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
-<defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#f58529"/>
-<stop offset="50%" stop-color="#dd2a7b"/>
-<stop offset="100%" stop-color="#8134af"/>
-</linearGradient></defs>
-<rect x="3" y="3" width="18" height="18" rx="5"/>
-<circle cx="12" cy="12" r="4"/>
-</svg>
-</a>
-<a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
-<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-  <rect x="2" y="4" width="20" height="16" rx="4" fill="#FF0000"/>
-  <polygon points="10,8 16,12 10,16" fill="#FFFFFF"/>
-</svg>
-</a>
-<a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
-<svg viewBox="0 0 32 32">
-<path fill="#25D366" d="M16 3C9.4 3 4 8.1 4 14.5c0 2.3.7 4.6 2 6.5L4 29l8.3-2.2c1.1.3 2.3.5 3.7.5 6.6 0 12-5.1 12-11.5S22.6 3 16 3z"/>
-<path fill="#fff" d="M21.4 18.6c-.3-.2-1.9-.9-2.2-1-.3-.1-.6-.2-.9.2-.3.4-1 1-1.2 1.2-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.6.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.4 4 1.6 4.3c.2.3 2.8 4.3 6.8 6 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.6-.5z"/>
-</svg>
-</a>
-</div>
-
-</div>
-
+<!-- FAQ VIEW -->
 <div class="container" id="faqView" style="display:none;background:linear-gradient(to bottom,#e6edf7 0%,#f4f7fb 100%)">
 <div class="card">
 <h2 data-i18n="faq_title"></h2>
@@ -273,6 +255,7 @@ a.button:hover{
 </div>
 </div>
 
+<!-- VIDEO MODAL -->
 <div id="videoModal">
 <div class="box">
 <button onclick="closeVideo()">×</button>
@@ -334,4 +317,3 @@ setLanguage("de");
 
 </body>
 </html>
-
