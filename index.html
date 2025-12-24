@@ -107,31 +107,30 @@ a.button:hover{
 .social-icon svg{width:28px;height:28px}
 
 /* VIDEO MODAL */
-#videoModal{
-  display:none;
-  position:fixed;
-  inset:0; /* top:0; bottom:0; left:0; right:0; */
-  background: rgba(0,0,0,0.75); /* Abgedunkelter Hintergrund */
-  z-index:2000;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+#videoModal {
+  display: none; /* WICHTIG: Modal ist zunächst unsichtbar */
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.75); /* abgedunkelter Hintergrund */
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
 }
 
-#videoModal .box{
-  position:relative;
-  max-width:90%;
-  width:800px;
-  border-radius:12px;
-  overflow:hidden; /* Video sauber im Rahmen */
-  box-shadow:0 20px 50px rgba(0,0,0,0.3);
+#videoModal .box {
+  position: relative;
+  max-width: 90%;
+  width: 800px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.3);
 }
 
-#videoModal iframe{
-  width:100%;
-  height:450px; /* oder auto für responsive */
-  border:none;
-  display:block;
+#videoModal iframe {
+  width: 100%;
+  height: 450px;
+  border: none;
+  display: block;
 }
 
 #videoModal button {
@@ -322,16 +321,14 @@ s.style.display="block";setTimeout(()=>s.style.display="none",2000);});
 }
 
 /* VIDEO */
-function openVideo(){
-    // Mobile- und Desktop-kompatibles Einbinden
-    const iframe = document.getElementById("videoFrame");
-    iframe.src = "https://www.youtube.com/embed/TNSjLdjA9Nc?rel=0&modestbranding=1"; // kein autoplay
-    document.getElementById("videoModal").style.display = "flex";
+function openVideo() {
+    document.getElementById("videoFrame").src = "https://www.youtube.com/embed/TNSjLdjA9Nc";
+    document.getElementById("videoModal").style.display = "flex"; // Modal erst hier anzeigen
 }
-function closeVideo(){
-    const iframe = document.getElementById("videoFrame");
-    iframe.src = "";
-    document.getElementById("videoModal").style.display = "none";
+
+function closeVideo() {
+    document.getElementById("videoFrame").src = "";
+    document.getElementById("videoModal").style.display = "none"; // Modal wieder verstecken
 }
 
 /* MAPS */
@@ -356,4 +353,5 @@ setLanguage("de");
 
 </body>
 </html>
+
 
