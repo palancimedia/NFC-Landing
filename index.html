@@ -25,45 +25,20 @@ color:#1f2937;
 
 /* HEADER */
 .header{
-position:sticky;
-top:0;
-width:100%;
-display:flex;
-align-items:center;
-gap:12px;
+position:sticky;top:0;
+display:flex;align-items:center;gap:12px;
 background:#ffffffcc;
 backdrop-filter:blur(6px);
 padding:8px 16px;
 border-bottom:1px solid #ddd;
 z-index:1000;
 }
-.header.faq-mode{
-justify-content:center;
-}
-.back-arrow{
-display:none;
-font-size:22px;
-cursor:pointer;
-}
-.header.faq-mode .back-arrow{
-display:block;
-position:absolute;
-left:16px;
-}
 .header-logo{width:40px;height:40px;border-radius:50%;border:1px solid #ddd}
 .header-title{font-weight:600;font-size:18px}
 .language-switcher{margin-left:auto}
-.header.faq-mode .language-switcher{
-position:absolute;
-right:16px;
-}
 .language-switcher select{
 padding:6px 10px;border-radius:8px;border:1px solid #ddd;font-weight:600;
 }
-
-/* VIEWS */
-.view{display:none}
-.view.active{display:block}
 
 /* LAYOUT */
 .container{
@@ -90,6 +65,8 @@ font-size:16px;font-weight:600;
 text-decoration:none;text-align:center;
 color:#fff;cursor:pointer;
 }
+a.button:hover{opacity:.95;transform:translateY(-1px)}
+
 .b1{background:linear-gradient(to right,#1e3a8a,#2563eb)}
 .b2{background:linear-gradient(to right,#2563eb,#3b82f6)}
 .b3{background:linear-gradient(to right,#3b82f6,#60a5fa)}
@@ -104,23 +81,18 @@ background:#2563eb;color:#fff;font-weight:600;cursor:pointer;
 }
 .copy-success{display:none;margin-top:8px;color:#10b981;font-weight:600}
 
-/* FAQ */
-.faq-item{
-text-align:left;
-border-top:1px solid #e5e7eb;
-padding:12px 0;
-cursor:pointer;
-}
-.faq-item p{display:none;margin-top:8px;color:#4b5563}
-
 /* SOCIALS */
-.socials{margin-top:24px;display:flex;gap:18px;justify-content:center}
+.socials{
+margin-top:24px;display:flex;gap:18px;justify-content:center
+}
 .social-icon{
 width:60px;height:60px;border-radius:50%;
 background:#fff;
 display:flex;align-items:center;justify-content:center;
 box-shadow:0 10px 24px rgba(0,0,0,.15);
+transition:.2s;
 }
+.social-icon:hover{transform:translateY(-3px)}
 .social-icon svg{width:30px;height:30px}
 
 /* VIDEO MODAL */
@@ -132,22 +104,30 @@ align-items:center;justify-content:center;
 }
 #videoModal .box{
 background:#fff;max-width:800px;width:90%;
-border-radius:16px;padding:16px;position:relative;
+border-radius:16px;padding:16px;
+box-shadow:0 20px 40px rgba(0,0,0,.3);
+position:relative;
 }
 #videoModal button{
-position:absolute;top:10px;right:14px;
-width:36px;height:36px;border-radius:50%;
-border:none;background:#111;color:#fff;
-font-size:22px;cursor:pointer;
+position:absolute;top:8px;right:12px;
+border:none;background:none;font-size:26px;cursor:pointer;
 }
+
+/* FAQ */
+.faq-item{
+text-align:left;
+border-top:1px solid #e5e7eb;
+padding:12px 0;
+cursor:pointer;
+}
+.faq-item p{display:none;margin-top:8px;color:#4b5563}
+
 </style>
 </head>
 
 <body>
 
-<!-- HEADER -->
-<div class="header" id="header">
-<div class="back-arrow" onclick="showHome()">←</div>
+<div class="header">
 <img src="logo.png" class="header-logo">
 <div class="header-title">Hisar Europe</div>
 <div class="language-switcher">
@@ -159,9 +139,7 @@ font-size:22px;cursor:pointer;
 </div>
 </div>
 
-<!-- HOME VIEW -->
-<section id="homeView" class="view active">
-<div class="container">
+<div class="container" id="homeView">
 
 <div class="card">
 <h2 data-i18n="review_title"></h2>
@@ -209,72 +187,54 @@ font-size:22px;cursor:pointer;
 
 <div class="card">
 <h2>FAQ</h2>
-<p>Häufige Fragen</p>
+<p>Häufige Fragen (Platzhalter)</p>
 <a class="button b4" href="#" onclick="showFAQ();return false;">Zum FAQ</a>
 </div>
 
 <div class="socials">
-<!-- Instagram -->
 <a class="social-icon" href="https://www.instagram.com/hisar_europe/" target="_blank">
 <svg viewBox="0 0 24 24" fill="none" stroke="url(#ig)">
-<defs>
-<linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
+<defs><linearGradient id="ig" x1="0%" y1="100%" x2="100%" y2="0%">
 <stop offset="0%" stop-color="#f58529"/>
 <stop offset="50%" stop-color="#dd2a7b"/>
 <stop offset="100%" stop-color="#8134af"/>
-</linearGradient>
-</defs>
+</linearGradient></defs>
 <rect x="3" y="3" width="18" height="18" rx="5"/>
 <circle cx="12" cy="12" r="4"/>
 </svg>
 </a>
-
-<!-- YouTube -->
 <a class="social-icon" href="https://www.youtube.com/@HisarEurope" target="_blank">
-<svg viewBox="0 0 24 24">
-<rect x="2" y="5" width="20" height="14" rx="4" fill="#FF0000"/>
-<polygon points="10,9 16,12 10,15" fill="#fff"/>
+<svg viewBox="0 0 24 24" fill="#ff0000">
+<path d="M23.5 6.2s-.2-1.7-.8-2.4c-.8-.9-1.7-.9-2.1-1C17.6 2.5 12 2.5 12 2.5s-5.6 0-8.6.3c-.4.1-1.3.1-2.1 1-.6.7-.8 2.4-.8 2.4S0 8.1 0 10v1.9c0 1.9.2 3.8.2 3.8s.2 1.7.8 2.4c.8.9 1.9.9 2.4 1 1.7.2 8.6.3 8.6.3s5.6 0 8.6-.3c.4-.1 1.3-.1 2.1-1 .6-.7.8-2.4.8-2.4s.2-1.9.2-3.8V10z"/>
 </svg>
 </a>
-
-<!-- WhatsApp -->
 <a class="social-icon" href="https://whatsapp.com/channel/0029VaSzmboJpe8jgaPg622N" target="_blank">
-<svg viewBox="0 0 32 32">
-<path fill="#25D366" d="M16 3C9.4 3 4 8.1 4 14.5c0 2.3.7 4.6 2 6.5L4 29l8.3-2.2c1.1.3 2.3.5 3.7.5 6.6 0 12-5.1 12-11.5S22.6 3 16 3z"/>
-<path fill="#fff" d="M21.4 18.6c-.3-.2-1.9-.9-2.2-1-.3-.1-.6-.2-.9.2-.3.4-1 1-1.2 1.2-.2.2-.4.3-.8.1-.4-.2-1.6-.6-3-1.9-1.1-1-1.9-2.2-2.1-2.6-.2-.4 0-.6.2-.8.2-.2.4-.4.6-.6.2-.2.3-.4.4-.6.1-.2 0-.5 0-.7 0-.2-.9-2.2-1.2-3-.3-.7-.6-.6-.9-.6h-.8c-.3 0-.7.1-1.1.5-.4.4-1.4 1.4-1.4 3.4s1.4 4 1.6 4.3c.2.3 2.8 4.3 6.8 6 1 .4 1.8.7 2.4.9 1 .3 1.9.3 2.6.2.8-.1 2.4-1 2.7-1.9.3-.9.3-1.7.2-1.9-.1-.2-.3-.3-.6-.5z"/>
+<svg viewBox="0 0 32 32" fill="#25D366">
+<path d="M16 2C8.3 2 2 8.1 2 15.6c0 2.7.8 5.3 2.3 7.5L2 30l7.2-2.2c2 1.1 4.3 1.7 6.8 1.7 7.7 0 14-6.1 14-13.6S23.7 2 16 2z"/>
 </svg>
 </a>
 </div>
 
 </div>
-</section>
 
-<!-- FAQ VIEW -->
-<section id="faqView" class="view">
-<div class="container">
+<!-- FAQ SECTION -->
+<div class="container" id="faqView" style="display:none;background:linear-gradient(to bottom,#e6edf7 0%,#f4f7fb 100%)">
 <div class="card">
 <h2>FAQ</h2>
 
 <div class="faq-item" onclick="toggleFaq(this)">
 <strong>Wie melde ich mich an?</strong>
-<p>Über die entsprechenden Anmeldeformulare auf der Startseite.</p>
+<p>Über die Anmeldeformulare auf der Startseite.</p>
 </div>
 
 <div class="faq-item" onclick="toggleFaq(this)">
 <strong>Wann beginnt die Reise?</strong>
-<p>Die genauen Termine werden nach Anmeldung mitgeteilt.</p>
-</div>
-
-<div class="faq-item" onclick="toggleFaq(this)">
-<strong>Wie erreiche ich euch?</strong>
-<p>Über WhatsApp, Instagram oder telefonisch.</p>
+<p>Die Termine werden nach Anmeldung bekanntgegeben.</p>
 </div>
 
 </div>
 </div>
-</section>
 
-<!-- VIDEO MODAL -->
 <div id="videoModal">
 <div class="box">
 <button onclick="closeVideo()">×</button>
@@ -283,43 +243,95 @@ font-size:22px;cursor:pointer;
 </div>
 
 <script>
+/* NAVIGATION */
 function showFAQ(){
-homeView.classList.remove("active");
-faqView.classList.add("active");
-header.classList.add("faq-mode");
-}
-function showHome(){
-faqView.classList.remove("active");
-homeView.classList.add("active");
-header.classList.remove("faq-mode");
+homeView.style.display="none";
+faqView.style.display="block";
 }
 function toggleFaq(el){
 const p=el.querySelector("p");
 p.style.display=p.style.display==="block"?"none":"block";
 }
+
+/* BANK */
 function toggleBank(){
-bankContent.style.display=bankContent.style.display==="block"?"none":"block";
+const el=document.getElementById("bankContent");
+el.style.display=el.style.display==="block"?"none":"block";
 }
 function copyIBAN(){
 navigator.clipboard.writeText("DE40 5023 4500 0254 5200 01")
-.then(()=>{copySuccess.style.display="block";
-setTimeout(()=>copySuccess.style.display="none",2000);});
+.then(()=>{const s=document.getElementById("copySuccess");
+s.style.display="block";setTimeout(()=>s.style.display="none",2000);});
 }
+
+/* VIDEO */
 function openVideo(){
-videoFrame.src="https://www.youtube.com/embed/TNSjLdjA9Nc?autoplay=1";
-videoModal.style.display="flex";
+document.getElementById("videoFrame").src="https://www.youtube.com/embed/TNSjLdjA9Nc?autoplay=1";
+document.getElementById("videoModal").style.display="flex";
 }
 function closeVideo(){
-videoFrame.src="";
-videoModal.style.display="none";
+document.getElementById("videoFrame").src="";
+document.getElementById("videoModal").style.display="none";
 }
+
+/* MAPS */
 function openGoogleMaps(e){
 e.preventDefault();
 window.open("https://search.google.com/local/writereview?placeid=ChIJg33E7j4lv0cRyFLRiBlbr1E","_blank");
 }
 
 /* TRANSLATIONS */
-const translations={/* unverändert aus Original */};
+const translations={
+de:{
+review_title:"Jetzt bewerten",
+review_text:"Teilen Sie Ihre Erfahrung",
+review_button:"Google-Bewertung abgeben",
+umrah_title:"Umra-Tour reservieren",
+umrah_text:"Jetzt online buchen",
+umrah_button:"Jetzt reservieren",
+hajj_title:"Hadsch 2026",
+hajj_text:"Jetzt vormerken",
+hajj_button:"Jetzt anmelden",
+bank_title:"Bankverbindung",
+bank_button:"Bankverbindung anzeigen",
+video_title:"Reisepass scannen",
+video_text:"Kurze Videoanleitung",
+video_button:"Tutorial ansehen"
+},
+tr:{
+review_title:"Değerlendirme yap",
+review_text:"Deneyiminizi paylaşın",
+review_button:"Google yorumu bırak",
+umrah_title:"Umre turu",
+umrah_text:"Online rezervasyon",
+umrah_button:"Rezervasyon yap",
+hajj_title:"Hac 2026",
+hajj_text:"Ön kayıt",
+hajj_button:"Kayıt ol",
+bank_title:"Banka bilgileri",
+bank_button:"Banka bilgilerini göster",
+video_title:"Pasaport nasıl okutulur",
+video_text:"Kısa video anlatım",
+video_button:"Videoyu izle"
+},
+en:{
+review_title:"Leave a review",
+review_text:"Share your experience",
+review_button:"Leave Google review",
+umrah_title:"Book Umrah tour",
+umrah_text:"Online booking",
+umrah_button:"Book now",
+hajj_title:"Hajj 2026",
+hajj_text:"Pre-registration",
+hajj_button:"Register now",
+bank_title:"Bank details",
+bank_button:"Show bank details",
+video_title:"How to scan your passport",
+video_text:"Short video guide",
+video_button:"Watch tutorial"
+}
+};
+
 function setLanguage(lang){
 document.querySelectorAll("[data-i18n]").forEach(el=>{
 el.innerText=translations[lang][el.dataset.i18n];
