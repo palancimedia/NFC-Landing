@@ -119,9 +119,30 @@ a.button:hover{
   box-shadow:0 20px 50px rgba(0,0,0,0.3);
   position:relative;
 }
-#videoModal button{
-  position:absolute;top:12px;right:16px;
-  border:none;background:none;font-size:28px;cursor:pointer;
+#videoModal button {
+  position: absolute;
+  top: -20px;          /* Abstand nach oben, damit der Kreis über dem Video schwebt */
+  right: -20px;        /* Abstand nach rechts */
+  width: 48px;         /* Kreisgröße */
+  height: 48px;        /* Kreisgröße */
+  border: none;
+  border-radius: 50%;  /* Kreis */
+  background: rgba(0,0,0,0.8);
+  color: #fff;
+  font-size: 28px;     /* Größer */
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  transition: all 0.25s ease;
+  z-index: 2100;
+}
+
+#videoModal button:hover {
+  background: rgba(0,0,0,1);
+  transform: scale(1.1);
 }
 
 /* FAQ */
@@ -317,3 +338,4 @@ setLanguage("de");
 
 </body>
 </html>
+
