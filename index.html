@@ -73,6 +73,7 @@ a.button{
   background:#007aff;
   box-shadow:0 6px 15px rgba(0,122,255,0.3);
   transition:all 0.25s ease;
+  text-decoration:none;
 }
 a.button:hover{
   transform:translateY(-2px);
@@ -108,17 +109,18 @@ a.button:hover{
 
 /* VIDEO MODAL */
 #videoModal {
-  display: none; /* Modal ist zunächst unsichtbar */
+  display: none; /* Modal zunächst unsichtbar */
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.75); /* abgedunkelter Hintergrund */
   z-index: 2000;
-  display: flex;
-  flex-direction: column; /* Video und Button untereinander */
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 20px; /* Abstand zum Rand */
+  padding: 20px;
 }
+
+#videoModal.active { display: flex; } /* erst beim Klick aktivieren */
 
 #videoModal .box {
   max-width: 90%;
@@ -134,7 +136,7 @@ a.button:hover{
   border: none;
   display: block;
   border-radius: 12px;
-  background: #000; /* Schwarzer Hintergrund für Video, falls nicht geladen */
+  background: #000;
 }
 
 /* Schließen-Button unterhalb des Videos */
@@ -240,7 +242,6 @@ a.button:hover{
 <a class="button" href="#" onclick="showFAQ();return false;" data-i18n="faq_button"></a>
 </div>
 
-<!-- NEUE SOCIAL-KARTE: TEXT + ICONS ZUSAMMEN -->
 <div class="card" style="background:#f9f9f9;">
   <p style="margin-bottom:16px;" data-i18n="social_prompt"></p>
   <div class="socials">
@@ -274,7 +275,6 @@ a.button:hover{
 
 </div> <!-- END homeView -->
 
-<!-- FAQ VIEW -->
 <div class="container" id="faqView" style="display:none;background:linear-gradient(to bottom,#e6edf7 0%,#f4f7fb 100%)">
 <div class="card">
 <h2 data-i18n="faq_title"></h2>
@@ -324,13 +324,17 @@ s.style.display="block";setTimeout(()=>s.style.display="none",2000);});
 
 /* VIDEO */
 function openVideo() {
-    document.getElementById("videoFrame").src = "https://www.youtube.com/embed/TNSjLdjA9Nc";
-    document.getElementById("videoModal").style.display = "flex"; // Modal erst hier anzeigen
+    const modal = document.getElementById("videoModal");
+    const frame = document.getElementById("videoFrame");
+    frame.src = "https://www.youtube.com/embed/TNSjLdjA9Nc";
+    modal.classList.add("active"); // Modal erst hier sichtbar
 }
 
 function closeVideo() {
-    document.getElementById("videoFrame").src = "";
-    document.getElementById("videoModal").style.display = "none"; // Modal wieder verstecken
+    const modal = document.getElementById("videoModal");
+    const frame = document.getElementById("videoFrame");
+    frame.src = "";
+    modal.classList.remove("active"); // Modal wieder verstecken
 }
 
 /* MAPS */
@@ -355,7 +359,3 @@ setLanguage("de");
 
 </body>
 </html>
-
-
-
-
