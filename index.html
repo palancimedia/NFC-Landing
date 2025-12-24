@@ -108,17 +108,19 @@ a.button:hover{
 
 /* VIDEO MODAL */
 #videoModal {
-  display: none; /* WICHTIG: Modal ist zunächst unsichtbar */
+  display: none; /* Modal ist zunächst unsichtbar */
   position: fixed;
   inset: 0;
   background: rgba(0,0,0,0.75); /* abgedunkelter Hintergrund */
   z-index: 2000;
+  display: flex;
+  flex-direction: column; /* Video und Button untereinander */
   align-items: center;
   justify-content: center;
+  padding: 20px; /* Abstand zum Rand */
 }
 
 #videoModal .box {
-  position: relative;
   max-width: 90%;
   width: 800px;
   border-radius: 12px;
@@ -131,30 +133,30 @@ a.button:hover{
   height: 450px;
   border: none;
   display: block;
+  border-radius: 12px;
+  background: #000; /* Schwarzer Hintergrund für Video, falls nicht geladen */
 }
 
-#videoModal button {
-  position: absolute;
-  top: -20px;
-  right: -20px;
-  width: 48px;
-  height: 48px;
-  border: none;
+/* Schließen-Button unterhalb des Videos */
+#videoModal .close-button {
+  margin-top: 16px;
+  width: 60px;
+  height: 60px;
   border-radius: 50%;
   background: rgba(0,0,0,0.8);
   color: #fff;
   font-size: 28px;
   font-weight: bold;
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 12px rgba(0,0,0,0.3);
   transition: all 0.25s ease;
-  z-index: 2100;
 }
 
-#videoModal button:hover {
+#videoModal .close-button:hover {
   background: rgba(0,0,0,1);
   transform: scale(1.1);
 }
@@ -353,5 +355,6 @@ setLanguage("de");
 
 </body>
 </html>
+
 
 
